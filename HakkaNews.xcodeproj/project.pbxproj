@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1126E75A19E337E4007C9E69 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1126E75919E337E4007C9E69 /* Launch Screen.xib */; };
 		1712B5D318A207D0001BB35A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1712B5D218A207D0001BB35A /* Social.framework */; };
 		17152A2218B2D5A900541ABE /* UINavigationController+M13ProgressViewBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 17152A2118B2D5A900541ABE /* UINavigationController+M13ProgressViewBar.m */; };
 		17152A2718B2DABF00541ABE /* M13ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 17152A2418B2DABF00541ABE /* M13ProgressHUD.m */; };
@@ -74,6 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1126E75919E337E4007C9E69 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		1712B5D218A207D0001BB35A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		17152A2018B2D5A900541ABE /* UINavigationController+M13ProgressViewBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+M13ProgressViewBar.h"; sourceTree = "<group>"; };
 		17152A2118B2D5A900541ABE /* UINavigationController+M13ProgressViewBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+M13ProgressViewBar.m"; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				179519951894D02E00536C5E /* topStoriesVC */,
 				179519181894CD2D00536C5E /* Images.xcassets */,
 				1795190D1894CD2D00536C5E /* Supporting Files */,
+				1126E75919E337E4007C9E69 /* Launch Screen.xib */,
 			);
 			path = HakkaNews;
 			sourceTree = "<group>";
@@ -593,9 +596,10 @@
 				ORGANIZATIONNAME = "John Smith";
 				TargetAttributes = {
 					179519021894CD2D00536C5E = {
-						DevelopmentTeam = F6WE3W8PGU;
+						DevelopmentTeam = Q92HY5UJ65;
 					};
 					1795191D1894CD2D00536C5E = {
+						DevelopmentTeam = Q92HY5UJ65;
 						TestTargetID = 179519021894CD2D00536C5E;
 					};
 				};
@@ -628,6 +632,7 @@
 				52D9C2BA18D09C43009E507D /* 69.PNG in Resources */,
 				179519111894CD2D00536C5E /* InfoPlist.strings in Resources */,
 				179519191894CD2D00536C5E /* Images.xcassets in Resources */,
+				1126E75A19E337E4007C9E69 /* Launch Screen.xib in Resources */,
 				1795195D1894CDDE00536C5E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -799,7 +804,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -816,7 +820,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
