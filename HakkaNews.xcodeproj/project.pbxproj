@@ -9,17 +9,8 @@
 /* Begin PBXBuildFile section */
 		1126E75A19E337E4007C9E69 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1126E75919E337E4007C9E69 /* Launch Screen.xib */; };
 		1712B5D318A207D0001BB35A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1712B5D218A207D0001BB35A /* Social.framework */; };
-		17152A2218B2D5A900541ABE /* UINavigationController+M13ProgressViewBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 17152A2118B2D5A900541ABE /* UINavigationController+M13ProgressViewBar.m */; };
-		17152A2718B2DABF00541ABE /* M13ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 17152A2418B2DABF00541ABE /* M13ProgressHUD.m */; };
 		17152A2818B2DABF00541ABE /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 17152A2618B2DABF00541ABE /* UIImage+ImageEffects.m */; };
-		17152A2B18B2DC0C00541ABE /* M13ProgressViewRing.m in Sources */ = {isa = PBXBuildFile; fileRef = 17152A2A18B2DC0C00541ABE /* M13ProgressViewRing.m */; };
-		17152A2E18B2DFE000541ABE /* M13ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17152A2D18B2DFE000541ABE /* M13ProgressView.m */; };
-		171FAB9A18AAF1C900151270 /* TWTSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 171FAB9918AAF1C900151270 /* TWTSideMenuViewController.m */; };
 		1749EEA0189DC8D700A0507D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1749EE9F189DC8D700A0507D /* Security.framework */; };
-		1749EEBA189DC97E00A0507D /* PocketAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1749EEB1189DC97E00A0507D /* PocketAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		1749EEBB189DC97E00A0507D /* PocketAPILogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1749EEB4189DC97E00A0507D /* PocketAPILogin.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		1749EEBC189DC97E00A0507D /* PocketAPIOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1749EEB6189DC97E00A0507D /* PocketAPIOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		1749EEBD189DC97E00A0507D /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1749EEB9189DC97E00A0507D /* SFHFKeychainUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		179519071894CD2D00536C5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 179519061894CD2D00536C5E /* Foundation.framework */; };
 		179519091894CD2D00536C5E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 179519081894CD2D00536C5E /* CoreGraphics.framework */; };
 		1795190B1894CD2D00536C5E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1795190A1894CD2D00536C5E /* UIKit.framework */; };
@@ -34,7 +25,6 @@
 		179519361894CD4600536C5E /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 179519351894CD4600536C5E /* SafariServices.framework */; };
 		1795195B1894CDCA00536C5E /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1795195A1894CDCA00536C5E /* LoginVC.m */; };
 		1795195D1894CDDE00536C5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1795195C1894CDDE00536C5E /* Main.storyboard */; };
-		179519601894CDF700536C5E /* MCSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1795195F1894CDF700536C5E /* MCSwipeTableViewCell.m */; };
 		179519631894CE0100536C5E /* postCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 179519621894CE0100536C5E /* postCell.m */; };
 		1795196C1894CE0D00536C5E /* storiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 179519651894CE0D00536C5E /* storiesViewController.m */; };
 		1795196D1894CE0D00536C5E /* submitVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 179519671894CE0D00536C5E /* submitVC.m */; };
@@ -50,18 +40,9 @@
 		17D3BE7E18AEF67B00A95506 /* PocketActivity.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D3BE7C18AEF67B00A95506 /* PocketActivity.png */; };
 		17D3BE7F18AEF67B00A95506 /* PocketActivity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D3BE7D18AEF67B00A95506 /* PocketActivity@2x.png */; };
 		17DFD3D818970056000BEF97 /* replyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DFD3D718970056000BEF97 /* replyVC.m */; };
-		5202CAC318CB16AB009A8AE0 /* TUSafariActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5202CAC218CB16AB009A8AE0 /* TUSafariActivity.m */; };
-		5217352B19DFA308003DC877 /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5217351D19DFA308003DC877 /* HNComment.m */; };
-		5217352C19DFA308003DC877 /* HNCommentLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 5217351F19DFA308003DC877 /* HNCommentLink.m */; };
-		5217352D19DFA308003DC877 /* HNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5217352119DFA308003DC877 /* HNManager.m */; };
-		5217352E19DFA308003DC877 /* HNPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5217352319DFA308003DC877 /* HNPost.m */; };
-		5217352F19DFA308003DC877 /* HNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5217352519DFA308003DC877 /* HNUser.m */; };
-		5217353019DFA308003DC877 /* HNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 5217352719DFA308003DC877 /* HNUtilities.m */; };
-		5217353119DFA308003DC877 /* HNWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5217352919DFA308003DC877 /* HNWebService.m */; };
 		52D9C2BA18D09C43009E507D /* 69.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 52D9C2B918D09C43009E507D /* 69.PNG */; };
 		52D9C2BD18D0A19E009E507D /* UIImage+tintImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D9C2BC18D0A19E009E507D /* UIImage+tintImage.m */; };
-		52D9C2C418D0B228009E507D /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D9C2C118D0B228009E507D /* FBShimmeringLayer.m */; };
-		52D9C2C518D0B228009E507D /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D9C2C318D0B228009E507D /* FBShimmeringView.m */; };
+		53C2B815BED844B789518E87 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19466389A7CE4F8CA9C0D954 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,29 +58,9 @@
 /* Begin PBXFileReference section */
 		1126E75919E337E4007C9E69 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		1712B5D218A207D0001BB35A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		17152A2018B2D5A900541ABE /* UINavigationController+M13ProgressViewBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+M13ProgressViewBar.h"; sourceTree = "<group>"; };
-		17152A2118B2D5A900541ABE /* UINavigationController+M13ProgressViewBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+M13ProgressViewBar.m"; sourceTree = "<group>"; };
-		17152A2318B2DABF00541ABE /* M13ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressHUD.h; sourceTree = "<group>"; };
-		17152A2418B2DABF00541ABE /* M13ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressHUD.m; sourceTree = "<group>"; };
 		17152A2518B2DABF00541ABE /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		17152A2618B2DABF00541ABE /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
-		17152A2918B2DC0C00541ABE /* M13ProgressViewRing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressViewRing.h; sourceTree = "<group>"; };
-		17152A2A18B2DC0C00541ABE /* M13ProgressViewRing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewRing.m; sourceTree = "<group>"; };
-		17152A2C18B2DFE000541ABE /* M13ProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressView.h; sourceTree = "<group>"; };
-		17152A2D18B2DFE000541ABE /* M13ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressView.m; sourceTree = "<group>"; };
-		171FAB9818AAF1C900151270 /* TWTSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTSideMenuViewController.h; sourceTree = "<group>"; };
-		171FAB9918AAF1C900151270 /* TWTSideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTSideMenuViewController.m; sourceTree = "<group>"; };
 		1749EE9F189DC8D700A0507D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		1749EEB0189DC97E00A0507D /* PocketAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketAPI.h; sourceTree = "<group>"; };
-		1749EEB1189DC97E00A0507D /* PocketAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketAPI.m; sourceTree = "<group>"; };
-		1749EEB2189DC97E00A0507D /* PocketAPI+NSOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PocketAPI+NSOperation.h"; sourceTree = "<group>"; };
-		1749EEB3189DC97E00A0507D /* PocketAPILogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketAPILogin.h; sourceTree = "<group>"; };
-		1749EEB4189DC97E00A0507D /* PocketAPILogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketAPILogin.m; sourceTree = "<group>"; };
-		1749EEB5189DC97E00A0507D /* PocketAPIOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketAPIOperation.h; sourceTree = "<group>"; };
-		1749EEB6189DC97E00A0507D /* PocketAPIOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketAPIOperation.m; sourceTree = "<group>"; };
-		1749EEB7189DC97E00A0507D /* PocketAPITypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketAPITypes.h; sourceTree = "<group>"; };
-		1749EEB8189DC97E00A0507D /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
-		1749EEB9189DC97E00A0507D /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		179519031894CD2D00536C5E /* HakkaNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HakkaNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		179519061894CD2D00536C5E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		179519081894CD2D00536C5E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -118,8 +79,6 @@
 		179519591894CDCA00536C5E /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
 		1795195A1894CDCA00536C5E /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		1795195C1894CDDE00536C5E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		1795195E1894CDF700536C5E /* MCSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSwipeTableViewCell.h; sourceTree = "<group>"; };
-		1795195F1894CDF700536C5E /* MCSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSwipeTableViewCell.m; sourceTree = "<group>"; };
 		179519611894CE0100536C5E /* postCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = postCell.h; sourceTree = "<group>"; };
 		179519621894CE0100536C5E /* postCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = postCell.m; sourceTree = "<group>"; };
 		179519641894CE0D00536C5E /* storiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = storiesViewController.h; sourceTree = "<group>"; };
@@ -148,32 +107,11 @@
 		17D3BE7D18AEF67B00A95506 /* PocketActivity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PocketActivity@2x.png"; sourceTree = "<group>"; };
 		17DFD3D618970056000BEF97 /* replyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = replyVC.h; sourceTree = "<group>"; };
 		17DFD3D718970056000BEF97 /* replyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = replyVC.m; sourceTree = "<group>"; };
-		5202CAC118CB16AB009A8AE0 /* TUSafariActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUSafariActivity.h; sourceTree = "<group>"; };
-		5202CAC218CB16AB009A8AE0 /* TUSafariActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUSafariActivity.m; sourceTree = "<group>"; };
-		5217351C19DFA308003DC877 /* HNComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNComment.h; sourceTree = "<group>"; };
-		5217351D19DFA308003DC877 /* HNComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNComment.m; sourceTree = "<group>"; };
-		5217351E19DFA308003DC877 /* HNCommentLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentLink.h; sourceTree = "<group>"; };
-		5217351F19DFA308003DC877 /* HNCommentLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentLink.m; sourceTree = "<group>"; };
-		5217352019DFA308003DC877 /* HNManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNManager.h; sourceTree = "<group>"; };
-		5217352119DFA308003DC877 /* HNManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNManager.m; sourceTree = "<group>"; };
-		5217352219DFA308003DC877 /* HNPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNPost.h; sourceTree = "<group>"; };
-		5217352319DFA308003DC877 /* HNPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNPost.m; sourceTree = "<group>"; };
-		5217352419DFA308003DC877 /* HNUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNUser.h; sourceTree = "<group>"; };
-		5217352519DFA308003DC877 /* HNUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNUser.m; sourceTree = "<group>"; };
-		5217352619DFA308003DC877 /* HNUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNUtilities.h; sourceTree = "<group>"; };
-		5217352719DFA308003DC877 /* HNUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNUtilities.m; sourceTree = "<group>"; };
-		5217352819DFA308003DC877 /* HNWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNWebService.h; sourceTree = "<group>"; };
-		5217352919DFA308003DC877 /* HNWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNWebService.m; sourceTree = "<group>"; };
-		5217352A19DFA308003DC877 /* libHN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libHN.h; sourceTree = "<group>"; };
+		19466389A7CE4F8CA9C0D954 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D9C2B918D09C43009E507D /* 69.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 69.PNG; sourceTree = "<group>"; };
 		52D9C2BB18D0A19E009E507D /* UIImage+tintImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+tintImage.h"; sourceTree = "<group>"; };
 		52D9C2BC18D0A19E009E507D /* UIImage+tintImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+tintImage.m"; sourceTree = "<group>"; };
-		52D9C2BE18D0B228009E507D /* FBShimmering-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FBShimmering-Prefix.pch"; sourceTree = "<group>"; };
-		52D9C2BF18D0B228009E507D /* FBShimmering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmering.h; sourceTree = "<group>"; };
-		52D9C2C018D0B228009E507D /* FBShimmeringLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringLayer.h; sourceTree = "<group>"; };
-		52D9C2C118D0B228009E507D /* FBShimmeringLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringLayer.m; sourceTree = "<group>"; };
-		52D9C2C218D0B228009E507D /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringView.h; sourceTree = "<group>"; };
-		52D9C2C318D0B228009E507D /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
+		B40FDAD12D0448BB9117D499 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +125,7 @@
 				179519091894CD2D00536C5E /* CoreGraphics.framework in Frameworks */,
 				1795190B1894CD2D00536C5E /* UIKit.framework in Frameworks */,
 				179519071894CD2D00536C5E /* Foundation.framework in Frameworks */,
+				53C2B815BED844B789518E87 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,24 +149,7 @@
 				17D3BE7918AEF65E00A95506 /* DRPocketActivity.h */,
 			);
 			name = DRPocketActivity;
-			sourceTree = "<group>";
-		};
-		171532BC18B30A2000063484 /* UINavigationController+ProgressViewBar */ = {
-			isa = PBXGroup;
-			children = (
-				17152A2018B2D5A900541ABE /* UINavigationController+M13ProgressViewBar.h */,
-				17152A2118B2D5A900541ABE /* UINavigationController+M13ProgressViewBar.m */,
-			);
-			name = "UINavigationController+ProgressViewBar";
-			sourceTree = "<group>";
-		};
-		171532BD18B30A4100063484 /* M13ProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				17152A2318B2DABF00541ABE /* M13ProgressHUD.h */,
-				17152A2418B2DABF00541ABE /* M13ProgressHUD.m */,
-			);
-			name = M13ProgressHUD;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		171532BE18B30A5700063484 /* UIImage+ImageEffects */ = {
@@ -237,33 +159,7 @@
 				17152A2618B2DABF00541ABE /* UIImage+ImageEffects.m */,
 			);
 			name = "UIImage+ImageEffects";
-			sourceTree = "<group>";
-		};
-		171532BF18B30A6700063484 /* M13ProgressViewRing */ = {
-			isa = PBXGroup;
-			children = (
-				17152A2918B2DC0C00541ABE /* M13ProgressViewRing.h */,
-				17152A2A18B2DC0C00541ABE /* M13ProgressViewRing.m */,
-			);
-			name = M13ProgressViewRing;
-			sourceTree = "<group>";
-		};
-		171532C018B30A7A00063484 /* M13ProgressView */ = {
-			isa = PBXGroup;
-			children = (
-				17152A2C18B2DFE000541ABE /* M13ProgressView.h */,
-				17152A2D18B2DFE000541ABE /* M13ProgressView.m */,
-			);
-			name = M13ProgressView;
-			sourceTree = "<group>";
-		};
-		171532C118B30A8A00063484 /* TWTSideMenuViewController */ = {
-			isa = PBXGroup;
-			children = (
-				171FAB9818AAF1C900151270 /* TWTSideMenuViewController.h */,
-				171FAB9918AAF1C900151270 /* TWTSideMenuViewController.m */,
-			);
-			name = TWTSideMenuViewController;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		171532C918B30AF600063484 /* postCell */ = {
@@ -311,45 +207,14 @@
 			name = AppDelegate;
 			sourceTree = "<group>";
 		};
-		1749EEA1189DC92E00A0507D /* Pocket */ = {
-			isa = PBXGroup;
-			children = (
-				1749EEB0189DC97E00A0507D /* PocketAPI.h */,
-				1749EEB1189DC97E00A0507D /* PocketAPI.m */,
-				1749EEB2189DC97E00A0507D /* PocketAPI+NSOperation.h */,
-				1749EEB3189DC97E00A0507D /* PocketAPILogin.h */,
-				1749EEB4189DC97E00A0507D /* PocketAPILogin.m */,
-				1749EEB5189DC97E00A0507D /* PocketAPIOperation.h */,
-				1749EEB6189DC97E00A0507D /* PocketAPIOperation.m */,
-				1749EEB7189DC97E00A0507D /* PocketAPITypes.h */,
-				1749EEB8189DC97E00A0507D /* SFHFKeychainUtils.h */,
-				1749EEB9189DC97E00A0507D /* SFHFKeychainUtils.m */,
-			);
-			name = Pocket;
-			sourceTree = "<group>";
-		};
 		179518FA1894CD2D00536C5E = {
 			isa = PBXGroup;
 			children = (
-				5249287619DBEA5800A56788 /* libHN */,
-				5202CAC118CB16AB009A8AE0 /* TUSafariActivity.h */,
-				5202CAC218CB16AB009A8AE0 /* TUSafariActivity.m */,
-				52D9C2BE18D0B228009E507D /* FBShimmering-Prefix.pch */,
-				52D9C2BF18D0B228009E507D /* FBShimmering.h */,
-				52D9C2C018D0B228009E507D /* FBShimmeringLayer.h */,
-				52D9C2C118D0B228009E507D /* FBShimmeringLayer.m */,
-				52D9C2C218D0B228009E507D /* FBShimmeringView.h */,
-				52D9C2C318D0B228009E507D /* FBShimmeringView.m */,
-				171532BC18B30A2000063484 /* UINavigationController+ProgressViewBar */,
-				171532BB18B30A0700063484 /* DRPocketActivity */,
-				171532BD18B30A4100063484 /* M13ProgressHUD */,
-				171532BE18B30A5700063484 /* UIImage+ImageEffects */,
-				171532BF18B30A6700063484 /* M13ProgressViewRing */,
-				171532C018B30A7A00063484 /* M13ProgressView */,
 				1795190C1894CD2D00536C5E /* HakkaNews */,
 				179519251894CD2D00536C5E /* HakkaNewsTests */,
 				179519051894CD2D00536C5E /* Frameworks */,
 				179519041894CD2D00536C5E /* Products */,
+				B40FDAD12D0448BB9117D499 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -372,6 +237,7 @@
 				179519081894CD2D00536C5E /* CoreGraphics.framework */,
 				1795190A1894CD2D00536C5E /* UIKit.framework */,
 				1795191F1894CD2D00536C5E /* XCTest.framework */,
+				19466389A7CE4F8CA9C0D954 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -380,14 +246,9 @@
 			isa = PBXGroup;
 			children = (
 				171532CD18B30B7700063484 /* AppDelegate */,
-				171532C118B30A8A00063484 /* TWTSideMenuViewController */,
-				1749EEA1189DC92E00A0507D /* Pocket */,
-				1795198F1894CF5E00536C5E /* MCSwipeTableViewCell */,
 				179519901894CF8100536C5E /* login */,
 				179519911894CFAF00536C5E /* customCell */,
 				1795195C1894CDDE00536C5E /* Main.storyboard */,
-				52D9C2BB18D0A19E009E507D /* UIImage+tintImage.h */,
-				52D9C2BC18D0A19E009E507D /* UIImage+tintImage.m */,
 				171532CB18B30B0E00063484 /* SettingsViewController */,
 				17DFD3D91897005C000BEF97 /* replyVC */,
 				179519921894CFD300536C5E /* storiesVC */,
@@ -406,6 +267,10 @@
 		1795190D1894CD2D00536C5E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				52D9C2BB18D0A19E009E507D /* UIImage+tintImage.h */,
+				52D9C2BC18D0A19E009E507D /* UIImage+tintImage.m */,
+				171532BB18B30A0700063484 /* DRPocketActivity */,
+				171532BE18B30A5700063484 /* UIImage+ImageEffects */,
 				52D9C2B918D09C43009E507D /* 69.PNG */,
 				17D3BE7C18AEF67B00A95506 /* PocketActivity.png */,
 				17D3BE7D18AEF67B00A95506 /* PocketActivity@2x.png */,
@@ -433,15 +298,6 @@
 				179519281894CD2D00536C5E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1795198F1894CF5E00536C5E /* MCSwipeTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				1795195F1894CDF700536C5E /* MCSwipeTableViewCell.m */,
-				1795195E1894CDF700536C5E /* MCSwipeTableViewCell.h */,
-			);
-			name = MCSwipeTableViewCell;
 			sourceTree = "<group>";
 		};
 		179519901894CF8100536C5E /* login */ = {
@@ -526,28 +382,6 @@
 			name = replyVC;
 			sourceTree = "<group>";
 		};
-		5249287619DBEA5800A56788 /* libHN */ = {
-			isa = PBXGroup;
-			children = (
-				5217351C19DFA308003DC877 /* HNComment.h */,
-				5217351D19DFA308003DC877 /* HNComment.m */,
-				5217351E19DFA308003DC877 /* HNCommentLink.h */,
-				5217351F19DFA308003DC877 /* HNCommentLink.m */,
-				5217352019DFA308003DC877 /* HNManager.h */,
-				5217352119DFA308003DC877 /* HNManager.m */,
-				5217352219DFA308003DC877 /* HNPost.h */,
-				5217352319DFA308003DC877 /* HNPost.m */,
-				5217352419DFA308003DC877 /* HNUser.h */,
-				5217352519DFA308003DC877 /* HNUser.m */,
-				5217352619DFA308003DC877 /* HNUtilities.h */,
-				5217352719DFA308003DC877 /* HNUtilities.m */,
-				5217352819DFA308003DC877 /* HNWebService.h */,
-				5217352919DFA308003DC877 /* HNWebService.m */,
-				5217352A19DFA308003DC877 /* libHN.h */,
-			);
-			name = libHN;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -555,9 +389,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1795192F1894CD2D00536C5E /* Build configuration list for PBXNativeTarget "HakkaNews" */;
 			buildPhases = (
+				97254E8AA8BB47DCBDC27D53 /* Check Pods Manifest.lock */,
 				179518FF1894CD2D00536C5E /* Sources */,
 				179519001894CD2D00536C5E /* Frameworks */,
 				179519011894CD2D00536C5E /* Resources */,
+				FA94B2093965404C90428711 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -647,48 +483,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		97254E8AA8BB47DCBDC27D53 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FA94B2093965404C90428711 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		179518FF1894CD2D00536C5E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				1795198B1894CE7200536C5E /* AppDelegate.m in Sources */,
-				5217352C19DFA308003DC877 /* HNCommentLink.m in Sources */,
-				5217353019DFA308003DC877 /* HNUtilities.m in Sources */,
 				52D9C2BD18D0A19E009E507D /* UIImage+tintImage.m in Sources */,
-				17152A2B18B2DC0C00541ABE /* M13ProgressViewRing.m in Sources */,
-				5217353119DFA308003DC877 /* HNWebService.m in Sources */,
-				1749EEBD189DC97E00A0507D /* SFHFKeychainUtils.m in Sources */,
 				179519131894CD2D00536C5E /* main.m in Sources */,
 				1795195B1894CDCA00536C5E /* LoginVC.m in Sources */,
 				17DFD3D818970056000BEF97 /* replyVC.m in Sources */,
-				5217352B19DFA308003DC877 /* HNComment.m in Sources */,
 				1795196F1894CE0D00536C5E /* UIColor+Colours.m in Sources */,
-				1749EEBA189DC97E00A0507D /* PocketAPI.m in Sources */,
 				17D3BE7B18AEF65E00A95506 /* DRPocketActivity.m in Sources */,
 				17D3BE6D18AEE04E00A95506 /* settingsCell.m in Sources */,
-				17152A2E18B2DFE000541ABE /* M13ProgressView.m in Sources */,
-				5217352F19DFA308003DC877 /* HNUser.m in Sources */,
 				1795196C1894CE0D00536C5E /* storiesViewController.m in Sources */,
-				5217352D19DFA308003DC877 /* HNManager.m in Sources */,
 				1795197D1894CE3F00536C5E /* commentCell.m in Sources */,
-				52D9C2C418D0B228009E507D /* FBShimmeringLayer.m in Sources */,
-				179519601894CDF700536C5E /* MCSwipeTableViewCell.m in Sources */,
-				5202CAC318CB16AB009A8AE0 /* TUSafariActivity.m in Sources */,
-				17152A2718B2DABF00541ABE /* M13ProgressHUD.m in Sources */,
-				1749EEBB189DC97E00A0507D /* PocketAPILogin.m in Sources */,
 				179519721894CE1900536C5E /* WebViewController.m in Sources */,
-				52D9C2C518D0B228009E507D /* FBShimmeringView.m in Sources */,
 				1795196D1894CE0D00536C5E /* submitVC.m in Sources */,
-				5217352E19DFA308003DC877 /* HNPost.m in Sources */,
 				1795197E1894CE3F00536C5E /* CommentsViewController.m in Sources */,
 				17152A2818B2DABF00541ABE /* UIImage+ImageEffects.m in Sources */,
-				171FAB9A18AAF1C900151270 /* TWTSideMenuViewController.m in Sources */,
 				1795196E1894CE0D00536C5E /* topStoriesViewController.m in Sources */,
-				17152A2218B2D5A900541ABE /* UINavigationController+M13ProgressViewBar.m in Sources */,
 				17D3BE6A18AED38600A95506 /* SettingsVC.m in Sources */,
 				179519631894CE0100536C5E /* postCell.m in Sources */,
-				1749EEBC189DC97E00A0507D /* PocketAPIOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,6 +651,7 @@
 		};
 		179519301894CD2D00536C5E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B40FDAD12D0448BB9117D499 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -818,6 +668,7 @@
 		};
 		179519311894CD2D00536C5E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B40FDAD12D0448BB9117D499 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

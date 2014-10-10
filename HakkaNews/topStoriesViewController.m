@@ -202,7 +202,7 @@
     self.navigationItem.title = @"Loading...";
     [self.navigationController setIndeterminate:YES];
     if ([self.postType isEqualToString:@"Top"]) {
-        [[HNManager sharedManager] loadPostsWithFilter:PostFilterTypeTop completion:^(NSArray *posts){
+        [[HNManager sharedManager] loadPostsWithFilter:PostFilterTypeTop completion:^(NSArray *posts, NSString *nextPageIdentifier){
             if (posts) {
                 self.currentPosts = [NSMutableArray arrayWithArray:posts];
                 self.navigationItem.title = self.postType;
@@ -219,7 +219,7 @@
     }
     
     else if ([self.postType isEqualToString:@"New"]) {
-        [[HNManager sharedManager] loadPostsWithFilter:PostFilterTypeNew completion:^(NSArray *posts){
+        [[HNManager sharedManager] loadPostsWithFilter:PostFilterTypeNew completion:^(NSArray *posts, NSString *nextPageIdentifier){
             if (posts) {
                 self.currentPosts = [NSMutableArray arrayWithArray:posts];
                 self.navigationItem.title = self.postType;
@@ -238,7 +238,7 @@
     }
     
     else if ([self.postType isEqualToString:@"Best"]) {
-        [[HNManager sharedManager] loadPostsWithFilter:PostFilterTypeBest completion:^(NSArray *posts){
+        [[HNManager sharedManager] loadPostsWithFilter:PostFilterTypeBest completion:^(NSArray *posts, NSString *nextPageIdentifier){
             if (posts) {
                 self.currentPosts = [NSMutableArray arrayWithArray:posts];
                 self.navigationItem.title = self.postType;
@@ -258,7 +258,7 @@
     }
     
     else if ([self.postType isEqualToString:@"Ask"]) {
-        [[HNManager sharedManager] loadPostsWithFilter:PostFilterTypeAsk completion:^(NSArray *posts){
+        [[HNManager sharedManager] loadPostsWithFilter:PostFilterTypeAsk completion:^(NSArray *posts, NSString *nextPageIdentifier){
             if (posts) {
                 self.currentPosts = [NSMutableArray arrayWithArray:posts];
                 self.navigationItem.title = self.postType;
@@ -278,7 +278,7 @@
     }
     
     else if ([self.postType isEqualToString:@"Jobs"]) {
-        [[HNManager sharedManager] loadPostsWithFilter:PostFilterTypeJobs completion:^(NSArray *posts){
+        [[HNManager sharedManager] loadPostsWithFilter:PostFilterTypeJobs completion:^(NSArray *posts, NSString *nextPageIdentifier){
             if (posts) {
                 self.currentPosts = [NSMutableArray arrayWithArray:posts];
                 self.navigationItem.title = self.postType;
@@ -551,7 +551,7 @@ HNPost *post=[self.currentPosts objectAtIndex:self.selectedIndexPath.row];
            if (![self.postType isEqualToString:@"Jobs"]){
         self.navigationItem.title=@"Loading more...";
                [self.navigationController setIndeterminate:YES];
-        [[HNManager sharedManager] loadPostsWithUrlAddition:[[HNManager sharedManager] postUrlAddition] completion:^(NSArray *posts) {
+        [[HNManager sharedManager] loadPostsWithUrlAddition:[[HNManager sharedManager] postUrlAddition] completion:^(NSArray *posts, NSString *nextPageIdentifier) {
             if (posts) {
                 [self.currentPosts addObjectsFromArray:posts];
                 [self.tableView reloadData];
