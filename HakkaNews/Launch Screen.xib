@@ -11,23 +11,25 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="EG4-0G-CFt">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
-                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hacker News" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6t-f2-6YT">
+                    <rect key="frame" x="185.5" y="210.5" width="109" height="59"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="59" id="vVQ-U9-lx7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="51"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="EG4-0G-CFt" secondAttribute="bottom" id="9XS-ss-2BO"/>
-                <constraint firstItem="EG4-0G-CFt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="PZ5-SV-rnz"/>
-                <constraint firstItem="EG4-0G-CFt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bHp-oH-fmA"/>
-                <constraint firstAttribute="trailing" secondItem="EG4-0G-CFt" secondAttribute="trailing" id="wiB-wm-Qr3"/>
+                <constraint firstAttribute="centerX" secondItem="b6t-f2-6YT" secondAttribute="centerX" id="WdT-jo-we8"/>
+                <constraint firstAttribute="centerY" secondItem="b6t-f2-6YT" secondAttribute="centerY" id="jEm-sM-s05"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="404" y="445"/>
         </view>
     </objects>
-    <resources>
-        <image name="LaunchImage" width="320" height="568"/>
-    </resources>
 </document>

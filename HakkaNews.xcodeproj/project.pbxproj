@@ -14,7 +14,6 @@
 		17152A2818B2DABF00541ABE /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 17152A2618B2DABF00541ABE /* UIImage+ImageEffects.m */; };
 		17152A2B18B2DC0C00541ABE /* M13ProgressViewRing.m in Sources */ = {isa = PBXBuildFile; fileRef = 17152A2A18B2DC0C00541ABE /* M13ProgressViewRing.m */; };
 		17152A2E18B2DFE000541ABE /* M13ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17152A2D18B2DFE000541ABE /* M13ProgressView.m */; };
-		171FAB9A18AAF1C900151270 /* TWTSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 171FAB9918AAF1C900151270 /* TWTSideMenuViewController.m */; };
 		1749EEA0189DC8D700A0507D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1749EE9F189DC8D700A0507D /* Security.framework */; };
 		1749EEBA189DC97E00A0507D /* PocketAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1749EEB1189DC97E00A0507D /* PocketAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1749EEBB189DC97E00A0507D /* PocketAPILogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1749EEB4189DC97E00A0507D /* PocketAPILogin.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -32,7 +31,6 @@
 		1795192A1894CD2D00536C5E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 179519281894CD2D00536C5E /* InfoPlist.strings */; };
 		1795192C1894CD2D00536C5E /* HakkaNewsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1795192B1894CD2D00536C5E /* HakkaNewsTests.m */; };
 		179519361894CD4600536C5E /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 179519351894CD4600536C5E /* SafariServices.framework */; };
-		1795195B1894CDCA00536C5E /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1795195A1894CDCA00536C5E /* LoginVC.m */; };
 		1795195D1894CDDE00536C5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1795195C1894CDDE00536C5E /* Main.storyboard */; };
 		179519601894CDF700536C5E /* MCSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1795195F1894CDF700536C5E /* MCSwipeTableViewCell.m */; };
 		179519631894CE0100536C5E /* postCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 179519621894CE0100536C5E /* postCell.m */; };
@@ -51,17 +49,18 @@
 		17D3BE7F18AEF67B00A95506 /* PocketActivity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D3BE7D18AEF67B00A95506 /* PocketActivity@2x.png */; };
 		17DFD3D818970056000BEF97 /* replyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DFD3D718970056000BEF97 /* replyVC.m */; };
 		5202CAC318CB16AB009A8AE0 /* TUSafariActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5202CAC218CB16AB009A8AE0 /* TUSafariActivity.m */; };
-		5217352B19DFA308003DC877 /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5217351D19DFA308003DC877 /* HNComment.m */; };
-		5217352C19DFA308003DC877 /* HNCommentLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 5217351F19DFA308003DC877 /* HNCommentLink.m */; };
-		5217352D19DFA308003DC877 /* HNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5217352119DFA308003DC877 /* HNManager.m */; };
-		5217352E19DFA308003DC877 /* HNPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5217352319DFA308003DC877 /* HNPost.m */; };
-		5217352F19DFA308003DC877 /* HNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5217352519DFA308003DC877 /* HNUser.m */; };
-		5217353019DFA308003DC877 /* HNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 5217352719DFA308003DC877 /* HNUtilities.m */; };
-		5217353119DFA308003DC877 /* HNWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5217352919DFA308003DC877 /* HNWebService.m */; };
-		52D9C2BA18D09C43009E507D /* 69.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 52D9C2B918D09C43009E507D /* 69.PNG */; };
+		520CF66519F0E8A10032EADE /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 520CF66419F0E8A10032EADE /* LoginVC.m */; };
+		520CF67D19F0EB860032EADE /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 520CF66F19F0EB860032EADE /* HNComment.m */; };
+		520CF67E19F0EB860032EADE /* HNCommentLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 520CF67119F0EB860032EADE /* HNCommentLink.m */; };
+		520CF67F19F0EB860032EADE /* HNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 520CF67319F0EB860032EADE /* HNManager.m */; };
+		520CF68019F0EB860032EADE /* HNPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 520CF67519F0EB860032EADE /* HNPost.m */; };
+		520CF68119F0EB860032EADE /* HNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 520CF67719F0EB860032EADE /* HNUser.m */; };
+		520CF68219F0EB860032EADE /* HNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 520CF67919F0EB860032EADE /* HNUtilities.m */; };
+		520CF68319F0EB860032EADE /* HNWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 520CF67B19F0EB860032EADE /* HNWebService.m */; };
+		520CF68819F0ECFA0032EADE /* TWTSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 520CF68719F0ECFA0032EADE /* TWTSideMenuViewController.m */; };
+		520CF68F19F0ED9E0032EADE /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 520CF68C19F0ED9E0032EADE /* FBShimmeringLayer.m */; };
+		520CF69019F0ED9E0032EADE /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 520CF68E19F0ED9E0032EADE /* FBShimmeringView.m */; };
 		52D9C2BD18D0A19E009E507D /* UIImage+tintImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D9C2BC18D0A19E009E507D /* UIImage+tintImage.m */; };
-		52D9C2C418D0B228009E507D /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D9C2C118D0B228009E507D /* FBShimmeringLayer.m */; };
-		52D9C2C518D0B228009E507D /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D9C2C318D0B228009E507D /* FBShimmeringView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,8 +86,6 @@
 		17152A2A18B2DC0C00541ABE /* M13ProgressViewRing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewRing.m; sourceTree = "<group>"; };
 		17152A2C18B2DFE000541ABE /* M13ProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressView.h; sourceTree = "<group>"; };
 		17152A2D18B2DFE000541ABE /* M13ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressView.m; sourceTree = "<group>"; };
-		171FAB9818AAF1C900151270 /* TWTSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTSideMenuViewController.h; sourceTree = "<group>"; };
-		171FAB9918AAF1C900151270 /* TWTSideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTSideMenuViewController.m; sourceTree = "<group>"; };
 		1749EE9F189DC8D700A0507D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1749EEB0189DC97E00A0507D /* PocketAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketAPI.h; sourceTree = "<group>"; };
 		1749EEB1189DC97E00A0507D /* PocketAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketAPI.m; sourceTree = "<group>"; };
@@ -116,7 +113,6 @@
 		1795192B1894CD2D00536C5E /* HakkaNewsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HakkaNewsTests.m; sourceTree = "<group>"; };
 		179519351894CD4600536C5E /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		179519591894CDCA00536C5E /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
-		1795195A1894CDCA00536C5E /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		1795195C1894CDDE00536C5E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1795195E1894CDF700536C5E /* MCSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSwipeTableViewCell.h; sourceTree = "<group>"; };
 		1795195F1894CDF700536C5E /* MCSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSwipeTableViewCell.m; sourceTree = "<group>"; };
@@ -150,30 +146,32 @@
 		17DFD3D718970056000BEF97 /* replyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = replyVC.m; sourceTree = "<group>"; };
 		5202CAC118CB16AB009A8AE0 /* TUSafariActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUSafariActivity.h; sourceTree = "<group>"; };
 		5202CAC218CB16AB009A8AE0 /* TUSafariActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUSafariActivity.m; sourceTree = "<group>"; };
-		5217351C19DFA308003DC877 /* HNComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNComment.h; sourceTree = "<group>"; };
-		5217351D19DFA308003DC877 /* HNComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNComment.m; sourceTree = "<group>"; };
-		5217351E19DFA308003DC877 /* HNCommentLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentLink.h; sourceTree = "<group>"; };
-		5217351F19DFA308003DC877 /* HNCommentLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentLink.m; sourceTree = "<group>"; };
-		5217352019DFA308003DC877 /* HNManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNManager.h; sourceTree = "<group>"; };
-		5217352119DFA308003DC877 /* HNManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNManager.m; sourceTree = "<group>"; };
-		5217352219DFA308003DC877 /* HNPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNPost.h; sourceTree = "<group>"; };
-		5217352319DFA308003DC877 /* HNPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNPost.m; sourceTree = "<group>"; };
-		5217352419DFA308003DC877 /* HNUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNUser.h; sourceTree = "<group>"; };
-		5217352519DFA308003DC877 /* HNUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNUser.m; sourceTree = "<group>"; };
-		5217352619DFA308003DC877 /* HNUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNUtilities.h; sourceTree = "<group>"; };
-		5217352719DFA308003DC877 /* HNUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNUtilities.m; sourceTree = "<group>"; };
-		5217352819DFA308003DC877 /* HNWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNWebService.h; sourceTree = "<group>"; };
-		5217352919DFA308003DC877 /* HNWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNWebService.m; sourceTree = "<group>"; };
-		5217352A19DFA308003DC877 /* libHN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libHN.h; sourceTree = "<group>"; };
-		52D9C2B918D09C43009E507D /* 69.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 69.PNG; sourceTree = "<group>"; };
+		520CF66419F0E8A10032EADE /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
+		520CF66E19F0EB860032EADE /* HNComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNComment.h; sourceTree = "<group>"; };
+		520CF66F19F0EB860032EADE /* HNComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNComment.m; sourceTree = "<group>"; };
+		520CF67019F0EB860032EADE /* HNCommentLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentLink.h; sourceTree = "<group>"; };
+		520CF67119F0EB860032EADE /* HNCommentLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentLink.m; sourceTree = "<group>"; };
+		520CF67219F0EB860032EADE /* HNManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNManager.h; sourceTree = "<group>"; };
+		520CF67319F0EB860032EADE /* HNManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNManager.m; sourceTree = "<group>"; };
+		520CF67419F0EB860032EADE /* HNPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNPost.h; sourceTree = "<group>"; };
+		520CF67519F0EB860032EADE /* HNPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNPost.m; sourceTree = "<group>"; };
+		520CF67619F0EB860032EADE /* HNUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNUser.h; sourceTree = "<group>"; };
+		520CF67719F0EB860032EADE /* HNUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNUser.m; sourceTree = "<group>"; };
+		520CF67819F0EB860032EADE /* HNUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNUtilities.h; sourceTree = "<group>"; };
+		520CF67919F0EB860032EADE /* HNUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNUtilities.m; sourceTree = "<group>"; };
+		520CF67A19F0EB860032EADE /* HNWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNWebService.h; sourceTree = "<group>"; };
+		520CF67B19F0EB860032EADE /* HNWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNWebService.m; sourceTree = "<group>"; };
+		520CF67C19F0EB860032EADE /* libHN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libHN.h; sourceTree = "<group>"; };
+		520CF68619F0ECFA0032EADE /* TWTSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTSideMenuViewController.h; sourceTree = "<group>"; };
+		520CF68719F0ECFA0032EADE /* TWTSideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTSideMenuViewController.m; sourceTree = "<group>"; };
+		520CF68919F0ED9E0032EADE /* FBShimmering-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FBShimmering-Prefix.pch"; sourceTree = "<group>"; };
+		520CF68A19F0ED9E0032EADE /* FBShimmering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmering.h; sourceTree = "<group>"; };
+		520CF68B19F0ED9E0032EADE /* FBShimmeringLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringLayer.h; sourceTree = "<group>"; };
+		520CF68C19F0ED9E0032EADE /* FBShimmeringLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringLayer.m; sourceTree = "<group>"; };
+		520CF68D19F0ED9E0032EADE /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringView.h; sourceTree = "<group>"; };
+		520CF68E19F0ED9E0032EADE /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
 		52D9C2BB18D0A19E009E507D /* UIImage+tintImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+tintImage.h"; sourceTree = "<group>"; };
 		52D9C2BC18D0A19E009E507D /* UIImage+tintImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+tintImage.m"; sourceTree = "<group>"; };
-		52D9C2BE18D0B228009E507D /* FBShimmering-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FBShimmering-Prefix.pch"; sourceTree = "<group>"; };
-		52D9C2BF18D0B228009E507D /* FBShimmering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmering.h; sourceTree = "<group>"; };
-		52D9C2C018D0B228009E507D /* FBShimmeringLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringLayer.h; sourceTree = "<group>"; };
-		52D9C2C118D0B228009E507D /* FBShimmeringLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringLayer.m; sourceTree = "<group>"; };
-		52D9C2C218D0B228009E507D /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringView.h; sourceTree = "<group>"; };
-		52D9C2C318D0B228009E507D /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,8 +258,8 @@
 		171532C118B30A8A00063484 /* TWTSideMenuViewController */ = {
 			isa = PBXGroup;
 			children = (
-				171FAB9818AAF1C900151270 /* TWTSideMenuViewController.h */,
-				171FAB9918AAF1C900151270 /* TWTSideMenuViewController.m */,
+				520CF68619F0ECFA0032EADE /* TWTSideMenuViewController.h */,
+				520CF68719F0ECFA0032EADE /* TWTSideMenuViewController.m */,
 			);
 			name = TWTSideMenuViewController;
 			sourceTree = "<group>";
@@ -331,15 +329,9 @@
 		179518FA1894CD2D00536C5E = {
 			isa = PBXGroup;
 			children = (
+				520CF68519F0EC320032EADE /* TUSafariActivity */,
+				520CF68419F0EC060032EADE /* FBShimmering */,
 				5249287619DBEA5800A56788 /* libHN */,
-				5202CAC118CB16AB009A8AE0 /* TUSafariActivity.h */,
-				5202CAC218CB16AB009A8AE0 /* TUSafariActivity.m */,
-				52D9C2BE18D0B228009E507D /* FBShimmering-Prefix.pch */,
-				52D9C2BF18D0B228009E507D /* FBShimmering.h */,
-				52D9C2C018D0B228009E507D /* FBShimmeringLayer.h */,
-				52D9C2C118D0B228009E507D /* FBShimmeringLayer.m */,
-				52D9C2C218D0B228009E507D /* FBShimmeringView.h */,
-				52D9C2C318D0B228009E507D /* FBShimmeringView.m */,
 				171532BC18B30A2000063484 /* UINavigationController+ProgressViewBar */,
 				171532BB18B30A0700063484 /* DRPocketActivity */,
 				171532BD18B30A4100063484 /* M13ProgressHUD */,
@@ -406,7 +398,6 @@
 		1795190D1894CD2D00536C5E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				52D9C2B918D09C43009E507D /* 69.PNG */,
 				17D3BE7C18AEF67B00A95506 /* PocketActivity.png */,
 				17D3BE7D18AEF67B00A95506 /* PocketActivity@2x.png */,
 				1795190E1894CD2D00536C5E /* HakkaNews-Info.plist */,
@@ -448,7 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				179519591894CDCA00536C5E /* LoginVC.h */,
-				1795195A1894CDCA00536C5E /* LoginVC.m */,
+				520CF66419F0E8A10032EADE /* LoginVC.m */,
 			);
 			name = login;
 			sourceTree = "<group>";
@@ -526,24 +517,46 @@
 			name = replyVC;
 			sourceTree = "<group>";
 		};
+		520CF68419F0EC060032EADE /* FBShimmering */ = {
+			isa = PBXGroup;
+			children = (
+				520CF68919F0ED9E0032EADE /* FBShimmering-Prefix.pch */,
+				520CF68A19F0ED9E0032EADE /* FBShimmering.h */,
+				520CF68B19F0ED9E0032EADE /* FBShimmeringLayer.h */,
+				520CF68C19F0ED9E0032EADE /* FBShimmeringLayer.m */,
+				520CF68D19F0ED9E0032EADE /* FBShimmeringView.h */,
+				520CF68E19F0ED9E0032EADE /* FBShimmeringView.m */,
+			);
+			name = FBShimmering;
+			sourceTree = "<group>";
+		};
+		520CF68519F0EC320032EADE /* TUSafariActivity */ = {
+			isa = PBXGroup;
+			children = (
+				5202CAC118CB16AB009A8AE0 /* TUSafariActivity.h */,
+				5202CAC218CB16AB009A8AE0 /* TUSafariActivity.m */,
+			);
+			name = TUSafariActivity;
+			sourceTree = "<group>";
+		};
 		5249287619DBEA5800A56788 /* libHN */ = {
 			isa = PBXGroup;
 			children = (
-				5217351C19DFA308003DC877 /* HNComment.h */,
-				5217351D19DFA308003DC877 /* HNComment.m */,
-				5217351E19DFA308003DC877 /* HNCommentLink.h */,
-				5217351F19DFA308003DC877 /* HNCommentLink.m */,
-				5217352019DFA308003DC877 /* HNManager.h */,
-				5217352119DFA308003DC877 /* HNManager.m */,
-				5217352219DFA308003DC877 /* HNPost.h */,
-				5217352319DFA308003DC877 /* HNPost.m */,
-				5217352419DFA308003DC877 /* HNUser.h */,
-				5217352519DFA308003DC877 /* HNUser.m */,
-				5217352619DFA308003DC877 /* HNUtilities.h */,
-				5217352719DFA308003DC877 /* HNUtilities.m */,
-				5217352819DFA308003DC877 /* HNWebService.h */,
-				5217352919DFA308003DC877 /* HNWebService.m */,
-				5217352A19DFA308003DC877 /* libHN.h */,
+				520CF66E19F0EB860032EADE /* HNComment.h */,
+				520CF66F19F0EB860032EADE /* HNComment.m */,
+				520CF67019F0EB860032EADE /* HNCommentLink.h */,
+				520CF67119F0EB860032EADE /* HNCommentLink.m */,
+				520CF67219F0EB860032EADE /* HNManager.h */,
+				520CF67319F0EB860032EADE /* HNManager.m */,
+				520CF67419F0EB860032EADE /* HNPost.h */,
+				520CF67519F0EB860032EADE /* HNPost.m */,
+				520CF67619F0EB860032EADE /* HNUser.h */,
+				520CF67719F0EB860032EADE /* HNUser.m */,
+				520CF67819F0EB860032EADE /* HNUtilities.h */,
+				520CF67919F0EB860032EADE /* HNUtilities.m */,
+				520CF67A19F0EB860032EADE /* HNWebService.h */,
+				520CF67B19F0EB860032EADE /* HNWebService.m */,
+				520CF67C19F0EB860032EADE /* libHN.h */,
 			);
 			name = libHN;
 			sourceTree = "<group>";
@@ -629,7 +642,6 @@
 			files = (
 				17D3BE7F18AEF67B00A95506 /* PocketActivity@2x.png in Resources */,
 				17D3BE7E18AEF67B00A95506 /* PocketActivity.png in Resources */,
-				52D9C2BA18D09C43009E507D /* 69.PNG in Resources */,
 				179519111894CD2D00536C5E /* InfoPlist.strings in Resources */,
 				179519191894CD2D00536C5E /* Images.xcassets in Resources */,
 				1126E75A19E337E4007C9E69 /* Launch Screen.xib in Resources */,
@@ -652,38 +664,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				520CF66519F0E8A10032EADE /* LoginVC.m in Sources */,
+				520CF67E19F0EB860032EADE /* HNCommentLink.m in Sources */,
+				520CF68219F0EB860032EADE /* HNUtilities.m in Sources */,
 				1795198B1894CE7200536C5E /* AppDelegate.m in Sources */,
-				5217352C19DFA308003DC877 /* HNCommentLink.m in Sources */,
-				5217353019DFA308003DC877 /* HNUtilities.m in Sources */,
 				52D9C2BD18D0A19E009E507D /* UIImage+tintImage.m in Sources */,
+				520CF68319F0EB860032EADE /* HNWebService.m in Sources */,
 				17152A2B18B2DC0C00541ABE /* M13ProgressViewRing.m in Sources */,
-				5217353119DFA308003DC877 /* HNWebService.m in Sources */,
 				1749EEBD189DC97E00A0507D /* SFHFKeychainUtils.m in Sources */,
 				179519131894CD2D00536C5E /* main.m in Sources */,
-				1795195B1894CDCA00536C5E /* LoginVC.m in Sources */,
 				17DFD3D818970056000BEF97 /* replyVC.m in Sources */,
-				5217352B19DFA308003DC877 /* HNComment.m in Sources */,
+				520CF67D19F0EB860032EADE /* HNComment.m in Sources */,
 				1795196F1894CE0D00536C5E /* UIColor+Colours.m in Sources */,
 				1749EEBA189DC97E00A0507D /* PocketAPI.m in Sources */,
 				17D3BE7B18AEF65E00A95506 /* DRPocketActivity.m in Sources */,
 				17D3BE6D18AEE04E00A95506 /* settingsCell.m in Sources */,
 				17152A2E18B2DFE000541ABE /* M13ProgressView.m in Sources */,
-				5217352F19DFA308003DC877 /* HNUser.m in Sources */,
+				520CF68119F0EB860032EADE /* HNUser.m in Sources */,
 				1795196C1894CE0D00536C5E /* storiesViewController.m in Sources */,
-				5217352D19DFA308003DC877 /* HNManager.m in Sources */,
+				520CF68F19F0ED9E0032EADE /* FBShimmeringLayer.m in Sources */,
+				520CF67F19F0EB860032EADE /* HNManager.m in Sources */,
 				1795197D1894CE3F00536C5E /* commentCell.m in Sources */,
-				52D9C2C418D0B228009E507D /* FBShimmeringLayer.m in Sources */,
 				179519601894CDF700536C5E /* MCSwipeTableViewCell.m in Sources */,
 				5202CAC318CB16AB009A8AE0 /* TUSafariActivity.m in Sources */,
 				17152A2718B2DABF00541ABE /* M13ProgressHUD.m in Sources */,
 				1749EEBB189DC97E00A0507D /* PocketAPILogin.m in Sources */,
+				520CF68819F0ECFA0032EADE /* TWTSideMenuViewController.m in Sources */,
+				520CF69019F0ED9E0032EADE /* FBShimmeringView.m in Sources */,
 				179519721894CE1900536C5E /* WebViewController.m in Sources */,
-				52D9C2C518D0B228009E507D /* FBShimmeringView.m in Sources */,
 				1795196D1894CE0D00536C5E /* submitVC.m in Sources */,
-				5217352E19DFA308003DC877 /* HNPost.m in Sources */,
+				520CF68019F0EB860032EADE /* HNPost.m in Sources */,
 				1795197E1894CE3F00536C5E /* CommentsViewController.m in Sources */,
 				17152A2818B2DABF00541ABE /* UIImage+ImageEffects.m in Sources */,
-				171FAB9A18AAF1C900151270 /* TWTSideMenuViewController.m in Sources */,
 				1795196E1894CE0D00536C5E /* topStoriesViewController.m in Sources */,
 				17152A2218B2D5A900541ABE /* UINavigationController+M13ProgressViewBar.m in Sources */,
 				17D3BE6A18AED38600A95506 /* SettingsVC.m in Sources */,

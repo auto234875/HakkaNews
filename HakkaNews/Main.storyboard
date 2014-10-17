@@ -625,9 +625,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ben-We-gmZ">
-                                <rect key="frame" x="40" y="220" width="240" height="128"/>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="coU-ft-qny">
                                 <rect key="frame" x="30" y="80" width="160" height="400"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -675,17 +672,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.95583545920000001" green="0.95583545920000001" blue="0.95583545920000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="ben-We-gmZ" secondAttribute="bottom" id="AFM-2J-kNV"/>
                             <constraint firstItem="coU-ft-qny" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zDK-vJ-OPV" secondAttribute="bottom" priority="998" constant="5" id="Aof-Ch-ooL"/>
-                            <constraint firstItem="ben-We-gmZ" firstAttribute="leading" secondItem="eWh-tp-uea" secondAttribute="leading" id="Dnd-Cc-ag7"/>
                             <constraint firstItem="coU-ft-qny" firstAttribute="leading" secondItem="eWh-tp-uea" secondAttribute="leading" constant="30" id="cfC-GQ-aM6"/>
-                            <constraint firstItem="ben-We-gmZ" firstAttribute="top" secondItem="eWh-tp-uea" secondAttribute="top" id="gaM-6v-FZh"/>
                             <constraint firstItem="coU-ft-qny" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eWh-tp-uea" secondAttribute="top" priority="999" constant="95" id="hO7-4V-JfC"/>
-                            <constraint firstAttribute="trailing" secondItem="ben-We-gmZ" secondAttribute="trailing" id="l80-xM-9pi"/>
                             <constraint firstItem="y9B-Ey-lsI" firstAttribute="top" relation="greaterThanOrEqual" secondItem="coU-ft-qny" secondAttribute="bottom" constant="5" id="muD-1r-M9U"/>
                             <constraint firstItem="zDK-vJ-OPV" firstAttribute="leading" secondItem="eWh-tp-uea" secondAttribute="leading" constant="45" id="zcE-x0-11R"/>
                         </constraints>
@@ -694,7 +687,6 @@
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="backgroundImageView" destination="ben-We-gmZ" id="RyX-Vz-NIV"/>
                         <outlet property="tableMenu" destination="coU-ft-qny" id="nP8-v0-zSa"/>
                         <outlet property="userName" destination="zDK-vJ-OPV" id="TwV-v8-vAC"/>
                     </connections>

@@ -30,9 +30,12 @@
 @implementation LoginVC
 
 #define IS_IPHONE_5 ( [ [ UIScreen mainScreen ] bounds ].size.height == 568 )
+#define IS_IPHONE_6 ([[UIScreen mainScreen] bounds].size.height == 667.0)
+#define IS_IPHONE_6_PLUS ([[UIScreen mainScreen] bounds].size.height == 736.0)
+
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    for (UIView * txt in self.backgroundImageView.subviews){
+    for (UIView * txt in self.view.subviews){
         if ([txt isKindOfClass:[UITextField class]] && [txt isFirstResponder]) {
             [txt resignFirstResponder];
         }
@@ -41,16 +44,16 @@
 
 
 - (void)addingSubView {
-    [self.view addSubview:self.backgroundImageView];
-    [self.backgroundImageView addSubview:self.shimmeringView];
-    [self.backgroundImageView addSubview:self.closeButton];
-    [self.backgroundImageView addSubview:self.password];
-    [self.backgroundImageView addSubview:self.username];
-    [self.backgroundImageView addSubview:self.separatorView];
+    [self.view addSubview:self.shimmeringView];
+    [self.view addSubview:self.closeButton];
+    [self.view addSubview:self.password];
+    [self.view addSubview:self.username];
+    [self.view addSubview:self.separatorView];
 }
 
 - (void)setupCloseButton {
-    [self.closeButton setImage:[[UIImage imageNamed:@"cancel"] tintedImageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+
+    [self.closeButton setImage:[[UIImage imageNamed:@"cancel"] tintedImageWithColor:[UIColor blackColor]] forState:UIControlStateNormal];
     [self.closeButton setImage:[[UIImage imageNamed:@"cancel"] tintedImageWithColor:[UIColor turquoiseColor]] forState:UIControlStateHighlighted];
     [self.closeButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -72,13 +75,13 @@
                           delay:0
                         options: UIViewAnimationOptionCurveEaseOut
                      animations:^{
-                         if (IS_IPHONE_5) {
+                         if (IS_IPHONE_5 || IS_IPHONE_6 || IS_IPHONE_6_PLUS) {
                          self.password.frame=CGRectMake(20, (self.view.frame.size.height/2)+fivex, self.view.frame.size.width-40,50);
                          self.separatorView.frame=CGRectMake(20, (self.view.frame.size.height/2)+fivey, self.password.frame.size.width,.5);
                          self.username.frame=CGRectMake(20, (self.view.frame.size.height/2)+fivez, self.password.frame.size.width, self.password.frame.size.height);
-                             self.shimmeringView.frame=CGRectMake(20, 110, 280, 59);
-                    
+                             self.shimmeringView.frame=CGRectMake((self.view.bounds.size.width/2)-140, 110, 280, 59);
                          }
+                        
                          else{
                              self.password.frame=CGRectMake(20, (self.view.frame.size.height/2)+fourx, self.view.frame.size.width-40,50);
                              self.separatorView.frame=CGRectMake(20, (self.view.frame.size.height/2)+foury, self.password.frame.size.width,.5);
@@ -117,6 +120,12 @@
                              self.shimmeringView.frame=CGRectMake(20, 70, 280, 59);
                              
                          }
+                         else if (IS_IPHONE_6 || IS_IPHONE_6_PLUS) {
+                             self.password.frame=CGRectMake(20, (self.view.frame.size.height/2)+35.5, self.view.frame.size.width-40,50);
+                             self.separatorView.frame=CGRectMake(20, (self.view.frame.size.height/2)+35, self.password.frame.size.width,.5);
+                             self.username.frame=CGRectMake(20, (self.view.frame.size.height/2)-15, self.password.frame.size.width, self.password.frame.size.height);
+                             self.shimmeringView.frame=CGRectMake((self.view.bounds.size.width/2)-140, 110, 280, 59);
+                         }
                          else{
                              self.password.frame=CGRectMake(20, self.view.frame.size.height-fourx-keyboardSize.height, self.view.frame.size.width-40,50);
                              self.separatorView.frame=CGRectMake(20, self.view.frame.size.height-foury-keyboardSize.height, self.password.frame.size.width,1);
@@ -129,18 +138,20 @@
     
 }
 
-- (void)setupBackground {
+/*- (void)setupBackground {
     self.backgroundImageView=[[UIImageView alloc] initWithFrame:self.view.frame];
+    self.backgroundImageView.backgroundColor=[UIColor whiteColor];
     self.backgroundImageView.image=self.loginBackgroundImage;
     self.backgroundImageView.contentMode=UIViewContentModeScaleAspectFill;
     self.backgroundImageView.userInteractionEnabled=YES;
-}
+}*/
 
 - (void)createCloseButton {
     self.closeButton=[[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-44.5, self.view.frame.size.height-15-89, 89, 89)];
 }
 
 - (void)createCustomSubviews {
+    self.view.backgroundColor= [UIColor whiteColor];
     self.password=[[UITextField alloc] init];
     self.username=[[UITextField alloc]init];
     self.separatorView=[[UIView alloc]init];
@@ -152,7 +163,7 @@
 - (void)setupTitleLabel {
     self.titleLabel.text=@"Hacker News";
     self.titleLabel.font=[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:51];
-    self.titleLabel.textColor=[UIColor whiteColor];
+    self.titleLabel.textColor=[UIColor blackColor];
 }
 
 -(void)viewDidLoad{
@@ -165,7 +176,7 @@
     self.shimmeringView.shimmeringOpacity=0.15;
     [self keyboardWillHide];
     [self setupTitleLabel];
-    [self setupBackground];
+    //[self setupBackground];
     [self addingSubView];
     [self setupTextField];
     
@@ -177,8 +188,10 @@
     self.password.delegate = self;
     self.username.font=[UIFont fontWithName:@"HelveticaNeue-Light" size:22];
     self.password.font=[UIFont fontWithName:@"HelveticaNeue-Light" size:22];
-    self.password.textColor=[UIColor whiteColor];
-    self.username.textColor=[UIColor whiteColor];
+    self.password.textColor=[UIColor blackColor];
+    self.username.textColor=[UIColor blackColor];
+    self.username.tintColor=[UIColor blackColor];
+    self.password.tintColor=[UIColor blackColor];
     self.password.secureTextEntry=YES;
     self.username.keyboardAppearance=UIKeyboardAppearanceDark;
     self.password.keyboardAppearance=UIKeyboardAppearanceDark;
@@ -238,10 +251,11 @@
                 UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"Something went wrong" message:@"Try again!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [alertView show];
                 [self keyboardWillHide];
-                self.username.tintColor=[UIColor whiteColor];
-                self.password.tintColor=[UIColor whiteColor];
-                self.username.textColor=[UIColor whiteColor];
-                self.password.textColor=[UIColor whiteColor];
+                self.shimmeringView.shimmering=NO;
+                self.username.tintColor=[UIColor blackColor];
+                self.password.tintColor=[UIColor blackColor];
+                self.username.textColor=[UIColor blackColor];
+                self.password.textColor=[UIColor blackColor];
                 self.separatorView.backgroundColor=[UIColor lightGrayColor];
                 self.username.userInteractionEnabled=YES;
                 self.password.userInteractionEnabled=YES;
@@ -265,7 +279,8 @@
                           delay:0
                         options: UIViewAnimationOptionCurveEaseOut
                      animations:^{
-                         self.shimmeringView.frame=CGRectMake(20, (self.view.frame.size.height/2)-(self.titleLabel.frame.size.height/2), 280, 59);
+                         self.shimmeringView.frame=CGRectMake((self.view.bounds.size.width/2)-140, (self.view.frame.size.height/2)-(self.titleLabel.frame.size.height/2), 280, 59);
+                         
                      }
                      completion:^(BOOL finished){
                          if (finished) {
