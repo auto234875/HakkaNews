@@ -17,7 +17,7 @@ static CGFloat const kMCAnimationDuration           = 0.4;  // Duration of the a
 static NSTimeInterval const kMCBounceDuration1      = 0.2;  // Duration of the first part of the bounce animation
 static NSTimeInterval const kMCBounceDuration2      = 0.1;  // Duration of the second part of the bounce animation
 static NSTimeInterval const kMCDurationLowLimit     = 0.25; // Lowest duration when swiping the cell because we try to simulate velocity
-static NSTimeInterval const kMCDurationHightLimit   = 0.1;  // Highest duration when swiping the cell because we try to simulate velocity
+static NSTimeInterval const kMCDurationHighLimit    = 0.1;  // Highest duration when swiping the cell because we try to simulate velocity
 
 typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellDirection) {
     MCSwipeTableViewCellDirectionLeft = 0,
@@ -44,7 +44,7 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellDirection) {
 // View Manipulation.
 - (void)setupSwipingView;
 - (void)uninstallSwipingView;
-- (void)setViewOfSlidingView:(UIView *)view;
+- (void)setViewOfSlidingView:(UIView *)slidingView;
 
 // Percentage
 - (CGFloat)offsetWithPercentage:(CGFloat)percentage relativeToWidth:(CGFloat)width;
@@ -110,7 +110,7 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellDirection) {
 - (void)initDefaults {
     
     _isExited = NO;
-    _isDragging = NO;
+    _dragging = NO;
     _shouldDrag = YES;
     _shouldAnimateIcons = YES;
     
@@ -197,7 +197,7 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellDirection) {
     _contentScreenshotView = nil;
 }
 
-- (void)setViewOfSlidingView:(UIView *)view {
+- (void)setViewOfSlidingView:(UIView *)slidingView {
     if (!_slidingView) {
         return;
     }
@@ -207,7 +207,7 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellDirection) {
         [view removeFromSuperview];
     }];
     
-    [_slidingView addSubview:view];
+    [_slidingView addSubview:slidingView];
 }
 
 #pragma mark - Swipe configuration
@@ -255,7 +255,7 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellDirection) {
 
 - (void)handlePanGestureRecognizer:(UIPanGestureRecognizer *)gesture {
     
-    if (!_shouldDrag || _isExited) {
+    if (![self shouldDrag] || _isExited) {
         return;
     }
     
@@ -267,7 +267,7 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellDirection) {
     _direction                          = [self directionWithPercentage:percentage];
     
     if (state == UIGestureRecognizerStateBegan || state == UIGestureRecognizerStateChanged) {
-        _isDragging = YES;
+        _dragging = YES;
         
         [self setupSwipingView];
         
@@ -284,7 +284,7 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellDirection) {
     
     else if (state == UIGestureRecognizerStateEnded || state == UIGestureRecognizerStateCancelled) {
         
-        _isDragging = NO;
+        _dragging = NO;
         _activeView = [self viewWithPercentage:percentage];
         _currentPercentage = percentage;
         
@@ -376,13 +376,13 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellDirection) {
 
 - (NSTimeInterval)animationDurationWithVelocity:(CGPoint)velocity {
     CGFloat width                           = CGRectGetWidth(self.bounds);
-    NSTimeInterval animationDurationDiff    = kMCDurationHightLimit - kMCDurationLowLimit;
+    NSTimeInterval animationDurationDiff    = kMCDurationHighLimit - kMCDurationLowLimit;
     CGFloat horizontalVelocity              = velocity.x;
     
     if (horizontalVelocity < -width) horizontalVelocity = -width;
     else if (horizontalVelocity > width) horizontalVelocity = width;
     
-    return (kMCDurationHightLimit + kMCDurationLowLimit) - fabs(((horizontalVelocity / width) * animationDurationDiff));
+    return (kMCDurationHighLimit + kMCDurationLowLimit) - fabs(((horizontalVelocity / width) * animationDurationDiff));
 }
 
 - (MCSwipeTableViewCellDirection)directionWithPercentage:(CGFloat)percentage {
@@ -520,30 +520,30 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellDirection) {
     position.y = CGRectGetHeight(self.bounds) / 2.0;
     
     if (isDragging) {
-        if (percentage >= 0 && percentage < kMCStop1) {
-            position.x = [self offsetWithPercentage:(kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+        if (percentage >= 0 && percentage < _firstTrigger) {
+            position.x = [self offsetWithPercentage:(_firstTrigger / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
         }
         
-        else if (percentage >= kMCStop1) {
-            position.x = [self offsetWithPercentage:percentage - (kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+        else if (percentage >= _firstTrigger) {
+            position.x = [self offsetWithPercentage:percentage - (_firstTrigger / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
         }
         
-        else if (percentage < 0 && percentage >= -kMCStop1) {
-            position.x = CGRectGetWidth(self.bounds) - [self offsetWithPercentage:(kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+        else if (percentage < 0 && percentage >= -_firstTrigger) {
+            position.x = CGRectGetWidth(self.bounds) - [self offsetWithPercentage:(_firstTrigger / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
         }
         
-        else if (percentage < -kMCStop1) {
-            position.x = CGRectGetWidth(self.bounds) + [self offsetWithPercentage:percentage + (kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+        else if (percentage < -_firstTrigger) {
+            position.x = CGRectGetWidth(self.bounds) + [self offsetWithPercentage:percentage + (_firstTrigger / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
         }
     }
     
     else {
         if (_direction == MCSwipeTableViewCellDirectionRight) {
-            position.x = [self offsetWithPercentage:(kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+            position.x = [self offsetWithPercentage:(_firstTrigger / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
         }
         
         else if (_direction == MCSwipeTableViewCellDirectionLeft) {
-            position.x = CGRectGetWidth(self.bounds) - [self offsetWithPercentage:(kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+            position.x = CGRectGetWidth(self.bounds) - [self offsetWithPercentage:(_firstTrigger / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
         }
         
         else {
@@ -665,7 +665,7 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellDirection) {
 #pragma mark - Utilities
 
 - (UIImage *)imageWithView:(UIView *)view {
-    short scale = [[UIScreen mainScreen] scale];
+    CGFloat scale = [[UIScreen mainScreen] scale];
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, scale);
     [view.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage * image = UIGraphicsGetImageFromCurrentImageContext();

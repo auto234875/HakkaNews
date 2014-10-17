@@ -32,7 +32,6 @@
 		1795192C1894CD2D00536C5E /* HakkaNewsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1795192B1894CD2D00536C5E /* HakkaNewsTests.m */; };
 		179519361894CD4600536C5E /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 179519351894CD4600536C5E /* SafariServices.framework */; };
 		1795195D1894CDDE00536C5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1795195C1894CDDE00536C5E /* Main.storyboard */; };
-		179519601894CDF700536C5E /* MCSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1795195F1894CDF700536C5E /* MCSwipeTableViewCell.m */; };
 		179519631894CE0100536C5E /* postCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 179519621894CE0100536C5E /* postCell.m */; };
 		1795196C1894CE0D00536C5E /* storiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 179519651894CE0D00536C5E /* storiesViewController.m */; };
 		1795196D1894CE0D00536C5E /* submitVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 179519671894CE0D00536C5E /* submitVC.m */; };
@@ -60,6 +59,7 @@
 		520CF68819F0ECFA0032EADE /* TWTSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 520CF68719F0ECFA0032EADE /* TWTSideMenuViewController.m */; };
 		520CF68F19F0ED9E0032EADE /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 520CF68C19F0ED9E0032EADE /* FBShimmeringLayer.m */; };
 		520CF69019F0ED9E0032EADE /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 520CF68E19F0ED9E0032EADE /* FBShimmeringView.m */; };
+		52C5C40819F103300004E085 /* MCSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C5C40719F103300004E085 /* MCSwipeTableViewCell.m */; };
 		52D9C2BD18D0A19E009E507D /* UIImage+tintImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D9C2BC18D0A19E009E507D /* UIImage+tintImage.m */; };
 /* End PBXBuildFile section */
 
@@ -114,8 +114,6 @@
 		179519351894CD4600536C5E /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		179519591894CDCA00536C5E /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
 		1795195C1894CDDE00536C5E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		1795195E1894CDF700536C5E /* MCSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSwipeTableViewCell.h; sourceTree = "<group>"; };
-		1795195F1894CDF700536C5E /* MCSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSwipeTableViewCell.m; sourceTree = "<group>"; };
 		179519611894CE0100536C5E /* postCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = postCell.h; sourceTree = "<group>"; };
 		179519621894CE0100536C5E /* postCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = postCell.m; sourceTree = "<group>"; };
 		179519641894CE0D00536C5E /* storiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = storiesViewController.h; sourceTree = "<group>"; };
@@ -170,6 +168,8 @@
 		520CF68C19F0ED9E0032EADE /* FBShimmeringLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringLayer.m; sourceTree = "<group>"; };
 		520CF68D19F0ED9E0032EADE /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringView.h; sourceTree = "<group>"; };
 		520CF68E19F0ED9E0032EADE /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
+		52C5C40619F103300004E085 /* MCSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSwipeTableViewCell.h; sourceTree = "<group>"; };
+		52C5C40719F103300004E085 /* MCSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSwipeTableViewCell.m; sourceTree = "<group>"; };
 		52D9C2BB18D0A19E009E507D /* UIImage+tintImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+tintImage.h"; sourceTree = "<group>"; };
 		52D9C2BC18D0A19E009E507D /* UIImage+tintImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+tintImage.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -429,8 +429,8 @@
 		1795198F1894CF5E00536C5E /* MCSwipeTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				1795195F1894CDF700536C5E /* MCSwipeTableViewCell.m */,
-				1795195E1894CDF700536C5E /* MCSwipeTableViewCell.h */,
+				52C5C40619F103300004E085 /* MCSwipeTableViewCell.h */,
+				52C5C40719F103300004E085 /* MCSwipeTableViewCell.m */,
 			);
 			name = MCSwipeTableViewCell;
 			sourceTree = "<group>";
@@ -609,7 +609,7 @@
 				ORGANIZATIONNAME = "John Smith";
 				TargetAttributes = {
 					179519021894CD2D00536C5E = {
-						DevelopmentTeam = Q92HY5UJ65;
+						DevelopmentTeam = F6WE3W8PGU;
 					};
 					1795191D1894CD2D00536C5E = {
 						DevelopmentTeam = Q92HY5UJ65;
@@ -671,6 +671,7 @@
 				52D9C2BD18D0A19E009E507D /* UIImage+tintImage.m in Sources */,
 				520CF68319F0EB860032EADE /* HNWebService.m in Sources */,
 				17152A2B18B2DC0C00541ABE /* M13ProgressViewRing.m in Sources */,
+				52C5C40819F103300004E085 /* MCSwipeTableViewCell.m in Sources */,
 				1749EEBD189DC97E00A0507D /* SFHFKeychainUtils.m in Sources */,
 				179519131894CD2D00536C5E /* main.m in Sources */,
 				17DFD3D818970056000BEF97 /* replyVC.m in Sources */,
@@ -685,7 +686,6 @@
 				520CF68F19F0ED9E0032EADE /* FBShimmeringLayer.m in Sources */,
 				520CF67F19F0EB860032EADE /* HNManager.m in Sources */,
 				1795197D1894CE3F00536C5E /* commentCell.m in Sources */,
-				179519601894CDF700536C5E /* MCSwipeTableViewCell.m in Sources */,
 				5202CAC318CB16AB009A8AE0 /* TUSafariActivity.m in Sources */,
 				17152A2718B2DABF00541ABE /* M13ProgressHUD.m in Sources */,
 				1749EEBB189DC97E00A0507D /* PocketAPILogin.m in Sources */,
@@ -816,11 +816,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HakkaNews/HakkaNews-Prefix.pch";
 				INFOPLIST_FILE = "HakkaNews/HakkaNews-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -832,11 +834,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HakkaNews/HakkaNews-Prefix.pch";
 				INFOPLIST_FILE = "HakkaNews/HakkaNews-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

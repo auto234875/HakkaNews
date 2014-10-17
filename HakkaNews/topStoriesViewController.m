@@ -517,11 +517,11 @@ HNPost *post=[self.currentPosts objectAtIndex:self.selectedIndexPath.row];
 }
 - (void)swipeTableViewCellDidStartSwiping:(MCSwipeTableViewCell *)cell {
     //disable cell selection to prevent crashing
-    [self.tableView setAllowsSelection:NO];
+    //[self.tableView setAllowsSelection:NO];
 }
 - (void)swipeTableViewCellDidEndSwiping:(MCSwipeTableViewCell *)cell {
     //When user cancel swipe, this reenable selection with delay to prevent crashing
-    [self.tableView performSelector:@selector(setAllowsSelection:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
+    //[self.tableView performSelector:@selector(setAllowsSelection:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
 }
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didSwipeWithPercentage:(CGFloat)percentage {
 }
