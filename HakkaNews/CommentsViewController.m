@@ -387,6 +387,7 @@
 }
 -(void)backToStories{
     [self.navigationController popToRootViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)stopListeningToInteractivePopGestureRecognizerNotification {
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"popBack" object:nil];

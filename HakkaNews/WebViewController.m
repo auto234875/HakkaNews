@@ -34,8 +34,7 @@
 @implementation WebViewController
 - (void)setupNavTitleAttribute {
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                                   [UIColor blackColor],NSForegroundColorAttributeName,
-                                                                   [UIColor blackColor],NSBackgroundColorAttributeName,[UIFont fontWithName:@"HelveticaNeue-Light" size:11], NSFontAttributeName, nil];
+                                                                   [UIColor blackColor],NSForegroundColorAttributeName,[UIColor blackColor],NSBackgroundColorAttributeName,[UIFont fontWithName:@"HelveticaNeue-Light" size:11], NSFontAttributeName, nil];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -57,6 +56,7 @@
 }*/
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 
 
 }
@@ -109,7 +109,9 @@
     }
 
 
+
 }
+
 - (void)setupInitialWebNavButton {
     self.backButton.enabled = NO;
     self.forwardButton.enabled = NO;
