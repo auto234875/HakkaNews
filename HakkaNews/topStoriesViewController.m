@@ -508,11 +508,9 @@ HNPost *post=[self.currentPosts objectAtIndex:self.selectedIndexPath.row];
     
     else if ([segue.identifier isEqualToString:@"showLogin"]){
         LoginVC *lvc=segue.destinationViewController;
-        lvc.loginBackgroundImage=self.loginBackgroundImage;
     }
     else if ([segue.identifier isEqualToString:@"showSettings"]){
         SettingsVC *svc=segue.destinationViewController;
-        svc.backgroundImage=self.loginBackgroundImage;
     }
 }
 - (void)swipeTableViewCellDidStartSwiping:(MCSwipeTableViewCell *)cell {

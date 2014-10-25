@@ -138,13 +138,7 @@
     
 }
 
-/*- (void)setupBackground {
-    self.backgroundImageView=[[UIImageView alloc] initWithFrame:self.view.frame];
-    self.backgroundImageView.backgroundColor=[UIColor whiteColor];
-    self.backgroundImageView.image=self.loginBackgroundImage;
-    self.backgroundImageView.contentMode=UIViewContentModeScaleAspectFill;
-    self.backgroundImageView.userInteractionEnabled=YES;
-}*/
+
 
 - (void)createCloseButton {
     self.closeButton=[[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-44.5, self.view.frame.size.height-15-89, 89, 89)];
@@ -176,7 +170,6 @@
     self.shimmeringView.shimmeringOpacity=0.15;
     [self keyboardWillHide];
     [self setupTitleLabel];
-    //[self setupBackground];
     [self addingSubView];
     [self setupTextField];
     
