@@ -19,7 +19,6 @@
 @property(nonatomic,strong)storiesViewController *stvc;
 @property(nonatomic,strong)topStoriesViewController *tvc;
 @property(nonatomic,strong)UINavigationController *nav;
-@property(nonatomic,strong)UIImage *backgroundImage;
 
 @end
 
@@ -40,11 +39,7 @@
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     self.stvc =[sb instantiateViewControllerWithIdentifier:@"stories"];
     
-    //self.tvc = [sb instantiateViewControllerWithIdentifier:@"topStories"];
     self.nav=[sb instantiateViewControllerWithIdentifier:@"nav"];
-    topStoriesViewController *tsvc=[[self.nav viewControllers]objectAtIndex:0];
-    self.backgroundImage=[UIImage imageNamed:@"69.PNG"];
-    tsvc.loginBackgroundImage=self.stvc.backgroundImage=self.backgroundImage;
     self.sideMenuVC = [[TWTSideMenuViewController alloc] initWithMenuViewController:self.stvc mainViewController:self.nav];
     self.sideMenuVC.shadowColor = [UIColor whiteColor];
     self.sideMenuVC.edgeOffset = (UIOffset) { .horizontal = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? 18.0f : 0.0f };

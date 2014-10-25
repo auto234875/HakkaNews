@@ -35,6 +35,7 @@
     [self.HUD hide:YES];
     [self dismissViewControllerAnimated:YES completion:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"replySuccessful" object:nil];
+        
     }];
 }
 
@@ -100,9 +101,7 @@
     self.replyBar.backgroundColor = [UIColor clearColor];
     self.replyBar.tintColor=[UIColor whiteColor];
 }
-- (void)registerNotification {
-    
-}
+
 - (void)setupButtonTitleTextAttributes {
     [self.discardButton setTitleTextAttributes:@{
                                                  NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:17],
@@ -116,7 +115,6 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self registerNotification];
     [self setupHUD];
     [self setupNavigationBarColor];
     [self setupButtonTitleTextAttributes];

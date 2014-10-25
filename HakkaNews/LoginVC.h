@@ -10,6 +10,4 @@
 
 @interface LoginVC : UIViewController
 
-@property (strong, nonatomic) UIImageView *backgroundImageView;
-@property(weak,nonatomic)UIImage *loginBackgroundImage;
 @end

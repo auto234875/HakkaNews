@@ -20,7 +20,6 @@
 
 @interface WebViewController () <UIGestureRecognizerDelegate, UIWebViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *postContentWebView;
-//@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *forwardButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *commentButton;
@@ -57,12 +56,15 @@
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.postContentWebView.delegate=nil;
 
 
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+    [self setupDelegation];
+    [self registerNotification];
 
 }
 
@@ -182,10 +184,10 @@
 
 -(void) viewDidLoad{
     [self setupWebView];
-    [self registerNotification];
+    //[self registerNotification];
     [self setupInitialWebNavButton];
     [self initialUserSetup];
-    [self setupDelegation];
+    //[self setupDelegation];
     self.hiddenNavBar=NO;
 }
 -(void)webViewDidFinishLoad:(UIWebView *)webView{

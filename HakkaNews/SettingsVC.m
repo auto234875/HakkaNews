@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *settingsTableView;
 @property (weak, nonatomic) IBOutlet UINavigationBar *settingsBar;
 @property (weak, nonatomic) IBOutlet UINavigationItem *settingsItem;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @end
 
@@ -46,8 +45,8 @@
 }
 -(void)setStatusNavigationTitleAttribute{
     self.settingsBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                                   [UIColor whiteColor],NSForegroundColorAttributeName,
-                                                                   [UIColor whiteColor],NSBackgroundColorAttributeName,[UIFont fontWithName:@"HelveticaNeue-Light" size:19], NSFontAttributeName, nil];
+                                                                   [UIColor blackColor],NSForegroundColorAttributeName,
+                                                                   [UIColor blackColor],NSBackgroundColorAttributeName,[UIFont fontWithName:@"HelveticaNeue-Light" size:19], NSFontAttributeName, nil];
 }
 
 -(NSArray*)settingsItems{
@@ -75,10 +74,10 @@
 -(void)viewDidLoad{
     [self removeFooter];
     [self setStatusNavigationTitleAttribute];
-    self.backgroundImageView.image=self.backgroundImage;
+    self.view.backgroundColor=[UIColor whiteColor];
     [self setupSettingsNavigationBar];
     UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close"] style:UIBarButtonItemStylePlain target:self action:@selector(close)];
-    closeButton.tintColor=[UIColor whiteColor];
+    closeButton.tintColor=[UIColor blackColor];
     self.settingsItem.leftBarButtonItem=closeButton;
     
 }
@@ -91,8 +90,8 @@
                            forBarMetrics:UIBarMetricsDefault];
     self.settingsBar.shadowImage = [UIImage new];
     self.settingsBar.translucent = YES;
-    self.settingsBar.backgroundColor = [UIColor clearColor];
-    self.settingsBar.tintColor=[UIColor whiteColor];
+    self.settingsBar.backgroundColor = [UIColor whiteColor];
+    self.settingsBar.tintColor=[UIColor blackColor];
 }
 
 

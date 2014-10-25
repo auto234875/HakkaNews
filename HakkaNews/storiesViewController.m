@@ -25,7 +25,6 @@
 @property(nonatomic)BOOL twitterIsAvailable;
 @property(nonatomic)NSUInteger animateCounter;
 @property(nonatomic,strong)UIActionSheet *as;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @end
 @implementation storiesViewController
@@ -97,7 +96,7 @@
     [self setupLoginChecker];
     [self registerForNotification];
     [self removeFooter];
-    self.backgroundImageView.image=self.backgroundImage;
+    //self.backgroundImageView.image=self.backgroundImage;
 
 }
 
@@ -108,7 +107,7 @@
 -(void)performLoggedInSetup{
     NSString *userName=[[HNManager sharedManager]SessionUser].Username;
     NSInteger karma=[[HNManager sharedManager]SessionUser].Karma;
-    self.userName.text=[NSString stringWithFormat:@"%@ (%i)",userName,karma];
+    self.userName.text=[NSString stringWithFormat:@"%@ (%li)",userName,(long)karma];
     if (self.twitterIsAvailable){
     self.menuItems=@[@"Top",@"New",@"Best",@"Ask",@"Jobs",@"Settings",@"Logout",@"Contact"];
     }

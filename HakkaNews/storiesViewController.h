@@ -10,7 +10,6 @@
 #import "HNManager.h"
 
 @interface storiesViewController:UIViewController <UINavigationBarDelegate>
-@property (weak,nonatomic)UIImage *backgroundImage;
 
 
 @end

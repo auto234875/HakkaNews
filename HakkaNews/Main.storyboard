@@ -124,12 +124,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uXW-Ss-kut">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HUx-9S-bVK">
                                 <rect key="frame" x="15" y="64" width="295" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="rtC-3f-8Br"/>
                                 </constraints>
@@ -157,7 +154,6 @@
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pocket" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGI-kP-wrq">
                                                     <rect key="frame" x="15" y="15" width="52" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Drf-Vv-Aoz">
@@ -173,7 +169,7 @@
                                                 </switch>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7N5-mP-1JY">
                                                     <rect key="frame" x="15" y="49" width="295" height="1"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="IUQ-oJ-UJR"/>
                                                     </constraints>
@@ -209,23 +205,18 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="gvt-Ig-wrj" firstAttribute="leading" secondItem="VDc-iJ-SnC" secondAttribute="leading" id="3VL-Eo-yWR"/>
-                            <constraint firstItem="uXW-Ss-kut" firstAttribute="leading" secondItem="VDc-iJ-SnC" secondAttribute="leading" id="7sc-XX-f7x"/>
                             <constraint firstItem="dpr-RR-351" firstAttribute="leading" secondItem="VDc-iJ-SnC" secondAttribute="leading" id="85m-9u-J3W"/>
                             <constraint firstAttribute="trailing" secondItem="gvt-Ig-wrj" secondAttribute="trailing" id="9fE-aa-9KY"/>
                             <constraint firstAttribute="trailing" secondItem="HUx-9S-bVK" secondAttribute="trailing" constant="10" id="BxG-I4-del"/>
-                            <constraint firstAttribute="bottom" secondItem="uXW-Ss-kut" secondAttribute="bottom" id="Dkf-c3-kZU"/>
                             <constraint firstItem="dpr-RR-351" firstAttribute="top" secondItem="HUx-9S-bVK" secondAttribute="bottom" id="FwH-8E-PTv"/>
                             <constraint firstItem="HUx-9S-bVK" firstAttribute="top" secondItem="gvt-Ig-wrj" secondAttribute="bottom" id="GkM-EH-sfR"/>
                             <constraint firstAttribute="trailing" secondItem="dpr-RR-351" secondAttribute="trailing" id="Rkf-qc-ZOM"/>
-                            <constraint firstItem="uXW-Ss-kut" firstAttribute="top" secondItem="VDc-iJ-SnC" secondAttribute="top" id="Yvc-ow-8Hv"/>
                             <constraint firstItem="Btj-gw-3Fr" firstAttribute="top" secondItem="dpr-RR-351" secondAttribute="bottom" id="jvZ-bi-MBK"/>
-                            <constraint firstAttribute="trailing" secondItem="uXW-Ss-kut" secondAttribute="trailing" id="kgO-Pt-7xW"/>
                             <constraint firstItem="HUx-9S-bVK" firstAttribute="leading" secondItem="VDc-iJ-SnC" secondAttribute="leading" constant="15" id="qXg-G5-zOt"/>
                             <constraint firstItem="gvt-Ig-wrj" firstAttribute="top" secondItem="pzD-YG-eK2" secondAttribute="bottom" id="z0E-pw-QbT"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backgroundImageView" destination="uXW-Ss-kut" id="9Ub-FA-9X9"/>
                         <outlet property="settingsBar" destination="gvt-Ig-wrj" id="Nft-fW-tnd"/>
                         <outlet property="settingsItem" destination="8uj-gJ-0hO" id="p4f-Gd-Ipt"/>
                         <outlet property="settingsTableView" destination="dpr-RR-351" id="1fn-GF-L2g"/>
@@ -741,7 +732,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="aLD-1m-fRO"/>
         <segue reference="5OO-at-KJW"/>
-        <segue reference="2b3-3T-Qce"/>
     </inferredMetricsTieBreakers>
 </document>

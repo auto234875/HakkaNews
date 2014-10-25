@@ -16,7 +16,6 @@
 @property (nonatomic, strong) NSString *postType;
 @property(nonatomic)BOOL reloadStories;
 @property(nonatomic)BOOL limitReached;
-@property(nonatomic,weak)UIImage *loginBackgroundImage;
 
 -(void)loadingStories;
 -(void)getStories;
