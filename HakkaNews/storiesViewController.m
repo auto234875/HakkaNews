@@ -25,6 +25,7 @@
 @property(nonatomic)BOOL twitterIsAvailable;
 @property(nonatomic)NSUInteger animateCounter;
 @property(nonatomic,strong)UIActionSheet *as;
+@property(nonatomic)BOOL reloadCellAnimation;
 
 @end
 @implementation storiesViewController
@@ -42,6 +43,7 @@
 }
 - (void)closeMenu {
     [self.sideMenuViewController closeMenuAnimated:YES completion:nil];
+    self.reloadCellAnimation=NO;
 }
 
 - (IBAction)panGestureHandle:(UIPanGestureRecognizer *)sender {
@@ -73,6 +75,7 @@
 }
 -(void)sideMenuWillOpenPreparation{
     self.animateCounter=0;
+    self.reloadCellAnimation=YES;
     [self.tableMenu reloadData];
 }
 - (void)setupLoginChecker {
@@ -96,14 +99,9 @@
     [self setupLoginChecker];
     [self registerForNotification];
     [self removeFooter];
-    //self.backgroundImageView.image=self.backgroundImage;
-
+    self.reloadCellAnimation=YES;
 }
 
-
--(void)openMenuSetup{
-    
-}
 -(void)performLoggedInSetup{
     NSString *userName=[[HNManager sharedManager]SessionUser].Username;
     NSInteger karma=[[HNManager sharedManager]SessionUser].Karma;
@@ -166,6 +164,9 @@
                              self.animateCounter +=1;
                          }
                      }];
+    }
+    else{
+        self.reloadCellAnimation=NO;
     }
 }
 - (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
