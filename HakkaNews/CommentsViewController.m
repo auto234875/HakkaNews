@@ -94,13 +94,26 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
+    HNComment *comment = [self.comments objectAtIndex:indexPath.row];
+
+    [tableView registerClass:[commentCell class] forCellReuseIdentifier:CellIdentifier];
+
     commentCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    /*if (!cell) {
+        cell=[[commentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    }*/
     [self configureCell:cell forRowAtIndexPath:indexPath];
+    CGSize userNameSize= [cell.userName.text sizeWithAttributes:@{NSFontAttributeName:cell.userName.font}];
+    cell.userName.frame=CGRectMake(15, 15, userNameSize.width, userNameSize.height);
+    if ([self.commentID containsObject:comment.CommentId]) {
+        cell.body.frame=CGRectZero;
+    }
+    else{
+    CGRect bodyRectWidthNHeight=[cell.body.text boundingRectWithSize:CGSizeMake(cell.contentView.bounds.size.width-30, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell.body.font} context:nil];
+    CGRect bodyRect=CGRectMake(cell.contentView.bounds.origin.x+15, cell.contentView.bounds.origin.y+cell.userName.bounds.size.height+30, bodyRectWidthNHeight.size.width, bodyRectWidthNHeight.size.height);
+    cell.body.frame=bodyRect;
+    }
     return cell;
-}
-- (void)setupCellTextColor:(commentCell *)cell {
-    cell.userName.textColor=[UIColor blackColor];
-    cell.content.textColor=[UIColor blackColor];
 }
 - (void)setupCellContentViewBackgroundColor:(commentCell *)cell {
     cell.contentView.backgroundColor=[UIColor snowColor];
@@ -168,8 +181,7 @@
     [self setupCellSelectedBackGroundColor:cell];
 
     cell.userName.text = comment.Username;
-    cell.content.text = comment.Text;
-    [self setupCellTextColor:cell];
+    cell.body.text = comment.Text;
     cell.indentationLevel =comment.Level;
     cell.indentationWidth = 13;
     
@@ -247,24 +259,30 @@
         [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
+
+#define contentViewVerticalPadding 15
+#define contentViewSidePadding 15
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
    [super tableView:tableView heightForRowAtIndexPath:indexPath];
     HNComment *comment    = [self.comments objectAtIndex:indexPath.row];
     //return collapsed cell height
+    CGSize userNameSize= [comment.Username sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"AvenirNext-DemiBold" size:15]}];
     if ([self.commentID containsObject:comment.CommentId]) {
-        return 41;
+        
+        return contentViewVerticalPadding*2+userNameSize.height;
     }
     else{
         //comment level *indentation width-padding
         UIFont   *textFont    = [UIFont fontWithName:@"AvenirNext-Regular" size:14];
-    CGFloat cellWidth= self.tableView.frame.size.width-(comment.Level *13.0)-20;
+    CGFloat cellWidth= self.tableView.frame.size.width-(comment.Level *13.0)-contentViewSidePadding*2;
     CGSize boundingSize = CGSizeMake(cellWidth, CGFLOAT_MAX);
     CGSize textSize = [comment.Text boundingRectWithSize:boundingSize
                                   options:NSStringDrawingUsesLineFragmentOrigin
                                attributes:@{ NSFontAttributeName : textFont }
                                   context:nil].size;
         //50 is accounting for padding and username label
-        return textSize.height + 50;
+        return textSize.height +userNameSize.height+ contentViewVerticalPadding*3;
     }
     
 }

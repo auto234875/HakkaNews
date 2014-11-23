@@ -10,7 +10,7 @@
 #import "MCSwipeTableViewCell.h"
 
 @interface commentCell : MCSwipeTableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *userName;
-@property (weak, nonatomic) IBOutlet UILabel *content;
+@property (strong, nonatomic) UILabel *userName;
+@property (strong, nonatomic) UILabel *body;
 
 @end

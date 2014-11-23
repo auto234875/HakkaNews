@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HNPost.h"
 
-@interface WebViewController : UIViewController <UIWebViewDelegate>
+@interface WebViewController : UIViewController
 @property (strong, nonatomic) NSURLRequest *postContentRequest;
 @property(strong, nonatomic) NSString *urlString;
 @property (strong, nonatomic)HNPost *replyPost;

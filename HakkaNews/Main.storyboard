@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="63F-ID-Who">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="63F-ID-Who">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Top Stories View Controller-->
@@ -456,40 +457,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <prototypes>
-                            <tableViewCell autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="tlH-WR-Eqx" customClass="commentCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="87"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tlH-WR-Eqx" id="zl3-fZ-O8W">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="86"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="randomusername" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0v-Kc-lWI">
-                                            <rect key="frame" x="10" y="10" width="123" height="21"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hhhhhhh" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="u0Q-0N-cLq">
-                                            <rect key="frame" x="10" y="37" width="300" height="39"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="u0Q-0N-cLq" firstAttribute="leading" secondItem="zl3-fZ-O8W" secondAttribute="leading" constant="10" id="HDI-TT-wze"/>
-                                        <constraint firstAttribute="bottom" secondItem="u0Q-0N-cLq" secondAttribute="bottom" constant="10" id="TQ2-od-Pfa"/>
-                                        <constraint firstAttribute="trailing" secondItem="u0Q-0N-cLq" secondAttribute="trailing" constant="10" id="Vf0-zs-rqo"/>
-                                        <constraint firstItem="M0v-Kc-lWI" firstAttribute="top" secondItem="zl3-fZ-O8W" secondAttribute="top" constant="10" id="XVF-Hr-alG"/>
-                                        <constraint firstItem="M0v-Kc-lWI" firstAttribute="leading" secondItem="zl3-fZ-O8W" secondAttribute="leading" constant="10" id="aVv-58-tkr"/>
-                                        <constraint firstItem="u0Q-0N-cLq" firstAttribute="top" secondItem="zl3-fZ-O8W" secondAttribute="top" constant="37" id="tnQ-39-AXO"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="content" destination="u0Q-0N-cLq" id="9AG-LB-SYr"/>
-                                    <outlet property="userName" destination="M0v-Kc-lWI" id="jrZ-XF-Mrz"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="XNj-vB-Shx" id="Edv-8M-4j6"/>
                             <outlet property="delegate" destination="XNj-vB-Shx" id="JKE-qA-OAA"/>
@@ -732,7 +699,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="aLD-1m-fRO"/>
-        <segue reference="5OO-at-KJW"/>
+        <segue reference="LBp-U0-UCp"/>
+        <segue reference="2b3-3T-Qce"/>
     </inferredMetricsTieBreakers>
 </document>

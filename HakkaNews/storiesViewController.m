@@ -61,16 +61,13 @@
 }
 -(NSArray*)menuItems{
     if (!_menuItems) {
-        _menuItems=@[@"Top",@"New",@"Best",@"Ask",@"Jobs",@"Settings",@"Login",@"Contact"];
+        _menuItems=@[@"Top",@"New",@"Best",@"Ask",@"Jobs",@"Settings",@"Login"];
     }
     return _menuItems;
 }
 - (void)registerForNotification {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkSupport) name:UIApplicationWillEnterForegroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(performLoggedInSetup) name:@"userIsLoggedIn" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(performNotLoggedInSetup) name:@"userIsNotLoggedIn" object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setupSupport) name:@"twitterIsAvailable" object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(removeSupport) name:@"twitterIsNotAvailable" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(sideMenuWillOpenPreparation) name:@"sideMenuWillOpen" object:nil];
 }
 -(void)sideMenuWillOpenPreparation{
@@ -95,7 +92,6 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self setupUsernameAttributes];
-    [self checkSupport];
     [self setupLoginChecker];
     [self registerForNotification];
     [self removeFooter];
@@ -106,22 +102,14 @@
     NSString *userName=[[HNManager sharedManager]SessionUser].Username;
     NSInteger karma=[[HNManager sharedManager]SessionUser].Karma;
     self.userName.text=[NSString stringWithFormat:@"%@ (%li)",userName,(long)karma];
-    if (self.twitterIsAvailable){
-    self.menuItems=@[@"Top",@"New",@"Best",@"Ask",@"Jobs",@"Settings",@"Logout",@"Contact"];
-    }
-    else{
+  
     self.menuItems=@[@"Top",@"New",@"Best",@"Ask",@"Jobs",@"Settings",@"Logout"];
-    }
+    
     [self.tableMenu reloadData];
-    }
+}
 -(void)performNotLoggedInSetup{
     self.userName.text=@"";
-    if ([[SLComposeViewController class] isAvailableForServiceType: SLServiceTypeTwitter]){
-        self.menuItems=@[@"Top",@"New",@"Best",@"Ask",@"Jobs",@"Settings",@"Login",@"Contact"];
-    }
-    else{
-        self.menuItems=@[@"Top",@"New",@"Best",@"Ask",@"Jobs",@"Settings",@"Login"];
-    }
+    self.menuItems=@[@"Top",@"New",@"Best",@"Ask",@"Jobs",@"Settings",@"Login"];
     [self.tableMenu reloadData];
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -195,14 +183,11 @@
             [self.tableMenu deselectRowAtIndexPath:indexPath animated:NO];
         }
     }
-    if (indexPath.row<5) {
+    else if (indexPath.row<5) {
         self.storiesType=[self.menuItems objectAtIndex:indexPath.row];
         [self loadStoriesAndCloseSideMenu];
     }
-    if (indexPath.row==7) {
-        [self support];
-    }
-    if (indexPath.row==5) {
+    else if (indexPath.row==5) {
         //[self performSegueWithIdentifier:@"showSettings" sender:self];
         [self showSettings];
         [self.tableMenu deselectRowAtIndexPath:indexPath animated:NO];
@@ -231,42 +216,7 @@
         [y getStories];
         [self closeMenu];
 }
--(void)setupSupport{
-    if (self.userIsLoggedIn) {
-     self.menuItems=@[@"Top",@"New",@"Best",@"Ask",@"Jobs",@"Settings",@"Logout",@"Contact"];
-    }
-    else{
-        self.menuItems=@[@"Top",@"New",@"Best",@"Ask",@"Jobs",@"Settings",@"Login",@"Contact"];
-    }
-    [self.tableMenu reloadData];
-}
--(void)removeSupport{
-    if (self.userIsLoggedIn) {
-        self.menuItems=@[@"Top",@"New",@"Best",@"Ask",@"Jobs",@"Settings",@"Logout"];
-    }
-    else{
-        self.menuItems=@[@"Top",@"New",@"Best",@"Ask",@"Jobs",@"Settings",@"Login"];
-    }
-    [self.tableMenu reloadData];
-}
--(void)checkSupport{
-    if ([[SLComposeViewController class] isAvailableForServiceType: SLServiceTypeTwitter]){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"twitterIsAvailable" object:nil];
-        self.twitterIsAvailable=YES;
 
-    }else{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"twitterIsNotAvailable" object:nil];
-        self.twitterIsAvailable=NO;
-
-    }
-}
--(void)support{
-    SLComposeViewController * composeVC = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-    [composeVC setInitialText:@"@HakkaNews "];
-    [self presentViewController:composeVC animated:YES completion:^{
-        [self.tableMenu reloadData];
-    }];
-}
 -(void)checkLoginStatus{
     if ([[HNManager sharedManager] userIsLoggedIn]) {
         if (!self.userIsLoggedIn) {
@@ -281,9 +231,4 @@
         self.userIsLoggedIn=NO;
     }
 }
-
--(void)karmaChangeNotification{
-    
-}
-
 @end

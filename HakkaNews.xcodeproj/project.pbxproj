@@ -612,7 +612,7 @@
 						DevelopmentTeam = F6WE3W8PGU;
 					};
 					1795191D1894CD2D00536C5E = {
-						DevelopmentTeam = Q92HY5UJ65;
+						DevelopmentTeam = F6WE3W8PGU;
 						TestTargetID = 179519021894CD2D00536C5E;
 					};
 				};
@@ -822,7 +822,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HakkaNews/HakkaNews-Prefix.pch";
 				INFOPLIST_FILE = "HakkaNews/HakkaNews-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -840,7 +840,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HakkaNews/HakkaNews-Prefix.pch";
 				INFOPLIST_FILE = "HakkaNews/HakkaNews-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

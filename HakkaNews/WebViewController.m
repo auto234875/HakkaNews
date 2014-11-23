@@ -18,7 +18,7 @@
 #import "TUSafariActivity.h"
 
 
-@interface WebViewController () <UIGestureRecognizerDelegate, UIWebViewDelegate, UIScrollViewDelegate>
+@interface WebViewController () <UIGestureRecognizerDelegate,UIWebViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *postContentWebView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *forwardButton;
