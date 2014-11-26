@@ -10,9 +10,6 @@
 #import "HNManager.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIColor+Colours.h"
-#import "M13ProgressHUD.h"
-#import "M13ProgressViewRing.h"
-#import "M13ProgressView.h"
 
 @interface submitVC ()<UITextFieldDelegate, UITextViewDelegate,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *submissionTitle;
@@ -23,23 +20,10 @@
 @property (weak, nonatomic) IBOutlet UINavigationBar *loginNavBar;
 @property(strong, nonatomic)UIActionSheet *as;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *discardButton;
-@property(nonatomic,strong)M13ProgressHUD *HUD;
 
 @end
 
 @implementation submitVC
-- (void)setupHUD {
-    self.HUD = [[M13ProgressHUD alloc] initWithProgressView:[[M13ProgressViewRing alloc] init]];
-    self.HUD.progressViewSize = CGSizeMake(60.0, 60.0);
-    [self.view addSubview:self.HUD];
-    [self.HUD setIndeterminate:YES];
-    //self.HUD.hudBackgroundColor=[UIColor snowColor];
-    self.HUD.secondaryColor=[UIColor whiteColor];
-    self.HUD.primaryColor=[UIColor whiteColor];
-    self.HUD.statusColor=[UIColor whiteColor];
-    //self.HUD.maskType=M13ProgressHUDMaskTypeGradient;
-    self.HUD.statusFont=[UIFont fontWithName:@"HelveticaNeue-Light" size:19];
-}
 
 - (void)ConfigureTextFieldsPlaceHolderColor:(UIColor *)color {
     self.submissionTitle.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Title" attributes:@{NSForegroundColorAttributeName: color}];

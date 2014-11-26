@@ -6,17 +6,12 @@
 //  Copyright (c) 2013 John Smith. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "HNPost.h"
-#import "HNManager.h"
-#import "WebViewController.h"
-
-@interface topStoriesViewController : UITableViewController
+@class HNPost;
+@interface topStoriesViewController : UIViewController
 @property (nonatomic, strong) NSMutableArray *currentPosts;
 @property (nonatomic, strong) NSString *postType;
 @property(nonatomic)BOOL reloadStories;
 @property(nonatomic)BOOL limitReached;
-
 -(void)loadingStories;
 -(void)getStories;
 

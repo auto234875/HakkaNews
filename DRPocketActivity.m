@@ -8,12 +8,9 @@
 
 #import "PocketAPI.h"
 #import "DRPocketActivity.h"
-#import "M13ProgressHUD.h"
-#import "M13ProgressViewRing.h"
 #import "AppDelegate.h"
 #import "UIColor+Colours.h"
 @interface DRPocketActivity()
-@property (nonatomic,strong)M13ProgressHUD *HUD;
 @end
 
 

@@ -1,1 +1,1 @@
-pod ‘libHN’
+pod 'pop', '~> 1.0'

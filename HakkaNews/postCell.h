@@ -9,7 +9,7 @@
 #import "MCSwipeTableViewCell.h"
 
 @interface postCell : MCSwipeTableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *postTitle;
-@property (weak, nonatomic) IBOutlet UILabel *postDetail;
+@property (strong, nonatomic) UILabel *postTitle;
+@property (strong, nonatomic) UILabel *postDetail;
 
 @end

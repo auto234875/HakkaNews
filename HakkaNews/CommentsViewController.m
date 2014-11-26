@@ -14,14 +14,12 @@
 #import "HNManager.h"
 #import "replyVC.h"
 #import "topStoriesViewController.h"
-#import "UINavigationController+M13ProgressViewBar.h"
 @interface CommentsViewController ()<MCSwipeTableViewCellDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate,UIActionSheetDelegate>
 @property (nonatomic, strong) NSMutableSet *commentID;
 @property (nonatomic, strong)UIRefreshControl *refreshControl;
 @property(nonatomic)BOOL userIsLoggedIn;
 @property(nonatomic,strong)UIActionSheet *as;
 @property(nonatomic,strong)NSIndexPath *voteIndexPath;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *submitCommentButton;
 @property(strong,nonatomic)NSMutableArray *upvoteComment;
 @property(strong,nonatomic)NSMutableArray *downvoteComment;
 @end
@@ -129,19 +127,19 @@
     if ([[self.as buttonTitleAtIndex:buttonIndex] isEqualToString:@"Upvote"]) {
         HNComment *comment=[self.comments objectAtIndex:self.voteIndexPath.row];
         self.navigationItem.title = @"Upvoting...";
-        [self.navigationController setIndeterminate:YES];
+        //starting loading animation
         [[HNManager sharedManager] voteOnPostOrComment:comment direction:VoteDirectionUp completion:^(BOOL success) {
             if (success){
                 [self.upvoteComment addObject:comment.CommentId];
                 [self saveListOfUpvoteComment];
                 self.navigationItem.title =@"Upvote Sucessful";
                 [self.tableView reloadRowsAtIndexPaths:@[self.voteIndexPath] withRowAnimation:UITableViewRowAnimationNone];
-                [self.navigationController finishProgress];
+                //stop loading animation
                 [self setDefaultNavigationTitleWithDelay];
             }
             else {
                 self.navigationItem.title = @"Could Not Upvote";
-                [self.navigationController finishProgress];
+                //stop loading animation
                 [self setDefaultNavigationTitleWithDelay];
             }
         }];
@@ -150,19 +148,19 @@
    else if ([[self.as buttonTitleAtIndex:buttonIndex] isEqualToString:@"Downvote"]) {
         HNComment *comment=[self.comments objectAtIndex:self.voteIndexPath.row];
         self.navigationItem.title = @"Downvoting...";
-       [self.navigationController setIndeterminate:YES];
+       //starting loading animation
         [[HNManager sharedManager] voteOnPostOrComment:comment direction:VoteDirectionDown completion:^(BOOL success) {
             if (success){
                 [self.downvoteComment addObject:comment.CommentId];
                 [self saveListOfDownvoteComment];
                 self.navigationItem.title =@"Downvote Sucessful";
                 [self.tableView reloadRowsAtIndexPaths:@[self.voteIndexPath] withRowAnimation:UITableViewRowAnimationNone];
-                [self.navigationController finishProgress];
+                //stop loading animation
                 [self setDefaultNavigationTitleWithDelay];
             }
             else {
                 self.navigationItem.title = @"Could Not Downvote";
-                [self.navigationController finishProgress];
+                //stop loading animation
                 [self setDefaultNavigationTitleWithDelay];
             }
         }];
@@ -321,7 +319,7 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.navigationController finishProgress];
+    //stop loading animation
     [self stopListeningToInteractivePopGestureRecognizerNotification];
 
 }
@@ -372,7 +370,7 @@
 }
 - (void)reloadComments {
     self.navigationItem.title = @"Loading Comments...";
-    [self.navigationController setIndeterminate:YES];
+    //starting loading animation
     [[HNManager sharedManager] loadCommentsFromPost:self.replyPost completion:^(NSArray *comments) {
         if (comments){
             self.comments=comments;
@@ -380,13 +378,13 @@
             
             [self.tableView reloadData];
             self.navigationItem.title = self.title ;
-            [self.navigationController finishProgress];
+           //stop loading animation
 
             
         }
         else{
             self.navigationItem.title = @"Could not reload comments";
-            [self.navigationController finishProgress];
+            //stop loading animation
         }
         
     }];
@@ -396,9 +394,7 @@
     [self reloadComments];
     [self.refreshControl endRefreshing];
 }
-- (IBAction)popVC:(UIBarButtonItem *)sender {
-    [self backToStories];
-}
+
 - (void)registerForInteractivePopGestureRecognizerNotification {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backToStories) name:@"popBack" object:nil];
     

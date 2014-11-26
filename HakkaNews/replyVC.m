@@ -9,44 +9,34 @@
 #import "replyVC.h"
 #import "HNManager.h"
 #import "UIColor+Colours.h"
-#import "M13ProgressHUD.h"
-#import "M13ProgressViewRing.h"
-#import "M13ProgressView.h"
+
 
 @interface replyVC ()<UITextViewDelegate, UIActionSheetDelegate>
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *replyButton;
-@property (weak, nonatomic) IBOutlet UITextView *replyText;
+@property (strong, nonatomic)UIButton *replyButton;
+@property (strong, nonatomic)UITextView *replyText;
 @property(strong, nonatomic)UIActionSheet *as;
-@property (weak, nonatomic) IBOutlet UINavigationBar *replyBar;
-@property (weak, nonatomic) IBOutlet UINavigationItem *replyItem;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *discardButton;
-@property(nonatomic,strong)M13ProgressHUD *HUD;
+@property (strong, nonatomic)UIButton *discardButton;
 @end
 
 @implementation replyVC
 - (void)HUDCouldNotReply {
     //self.replyItem.title = @"Could not reply";
-    self.HUD.status=@"Could not Reply";
-    [self.HUD performAction:M13ProgressViewActionFailure animated:YES];
-    [self.HUD performSelector:@selector(hide:) withObject:[NSNumber numberWithBool:YES] afterDelay:2.0];
+    //could not reply animation here
 }
 
 - (void)HUDReplySuccess {
-    [self.HUD hide:YES];
+    //reply successful animation here
     [self dismissViewControllerAnimated:YES completion:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"replySuccessful" object:nil];
         
     }];
 }
 
-- (IBAction)reply:(UIBarButtonItem *)sender {
+- (void)reply{
     self.replyButton.enabled= NO;
-    [self.HUD setIndeterminate:YES];
+    //start progress animation
     if (self.replyPost) {
         self.replyButton.enabled=NO;
-        self.HUD.status=@"Replying..";
-        [self.HUD show:YES];
-        [self.HUD performAction:M13ProgressViewActionNone animated:YES];
         [[HNManager sharedManager] replyToPostOrComment:self.replyPost withText:self.replyText.text completion:^(BOOL success) {
             if (success) {
                 [self HUDReplySuccess];
@@ -60,9 +50,6 @@
     
     else if (self.replyComment){
         self.replyButton.enabled=NO;
-        self.HUD.status=@"Replying..";
-        [self.HUD show:YES];
-        [self.HUD performAction:M13ProgressViewActionNone animated:YES];
         [[HNManager sharedManager] replyToPostOrComment:self.replyComment withText:self.replyText.text completion:^(BOOL success) {
             if (success) {
                 [self HUDReplySuccess];
@@ -89,38 +76,33 @@
         [self textViewDidChangeSelection:self.replyText];
       }
 }
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-
-}
-- (void)setupNavigationBarColor {
-    [self.replyBar setBackgroundImage:[UIImage new]
-                        forBarMetrics:UIBarMetricsDefault];
-    self.replyBar.shadowImage = [UIImage new];
-    self.replyBar.translucent = YES;
-    self.replyBar.backgroundColor = [UIColor clearColor];
-    self.replyBar.tintColor=[UIColor whiteColor];
-}
-
-- (void)setupButtonTitleTextAttributes {
-    [self.discardButton setTitleTextAttributes:@{
-                                                 NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:17],
-                                                 NSForegroundColorAttributeName: [UIColor blackColor]
-                                                 } forState:UIControlStateNormal];
-    [self.replyButton setTitleTextAttributes:@{
-                                               NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:17],
-                                               NSForegroundColorAttributeName: [UIColor blackColor]
-                                               } forState:UIControlStateNormal];
-}
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self setupHUD];
-    [self setupNavigationBarColor];
-    [self setupButtonTitleTextAttributes];
-    self.replyBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                                   [UIColor blackColor],NSForegroundColorAttributeName,
-                                                                   [UIColor blackColor],NSBackgroundColorAttributeName,[UIFont fontWithName:@"HelveticaNeue-Light" size:19], NSFontAttributeName, nil];
+    self.view.backgroundColor=[UIColor snowColor];
+    self.discardButton=[[UIButton alloc] init];
+    self.discardButton.frame=CGRectMake(10, 20, 60, 44);
+    [self.discardButton setTitle:@"Discard" forState:UIControlStateNormal];
+
+    self.discardButton.titleLabel.font=[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:17];
+    [self.discardButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.discardButton.backgroundColor=[UIColor snowColor];
+    self.replyButton=[[UIButton alloc] init];
+    [self.replyButton setTitle:@"Reply" forState:UIControlStateNormal];
+
+    self.replyButton.frame=CGRectMake(self.view.bounds.size.width-65, 20, 60, 44);
+    self.replyButton.titleLabel.text=@"Reply";
+    self.replyButton.titleLabel.font=[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:17];
+    [self.replyButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.replyButton.backgroundColor=[UIColor snowColor];
+    [self.discardButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+    [self.replyButton addTarget:self action:@selector(reply) forControlEvents:UIControlEventTouchUpInside];
+    CALayer *layer=[CALayer layer];
+    layer.backgroundColor=[UIColor blackColor].CGColor;
+    layer.frame=CGRectMake(15, 64, self.view.bounds.size.width-30, 0.3);
+    [self.view addSubview:self.discardButton];
+    [self.view addSubview:self.replyButton];
+    [self.view.layer addSublayer:layer];
     [self.replyText becomeFirstResponder];
 
 }
@@ -166,7 +148,7 @@
     }
 }
 
-- (IBAction)cancel:(UIBarButtonItem *)sender {
+- (void)cancel{
     if (!self.as) {
         self.as=[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Discard Draft" otherButtonTitles:nil];
     }
@@ -181,18 +163,6 @@
         }];
 
     }
-}
-- (void)setupHUD {
-    self.HUD = [[M13ProgressHUD alloc] initWithProgressView:[[M13ProgressViewRing alloc] init]];
-    self.HUD.progressViewSize = CGSizeMake(60.0, 60.0);
-    [self.view addSubview:self.HUD];
-    //[self.HUD setIndeterminate:YES];
-    //self.HUD.hudBackgroundColor=[UIColor snowColor];
-    self.HUD.secondaryColor=[UIColor whiteColor];
-    self.HUD.primaryColor=[UIColor whiteColor];
-    self.HUD.statusColor=[UIColor whiteColor];
-    //self.HUD.maskType=M13ProgressHUDMaskTypeGradient;
-    self.HUD.statusFont=[UIFont fontWithName:@"HelveticaNeue-Light" size:19];
 }
 
 

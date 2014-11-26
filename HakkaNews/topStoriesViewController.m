@@ -7,19 +7,16 @@
 //
 
 #import "topStoriesViewController.h"
-#import "WebViewController.h"
 #import "CommentsViewController.h"
 #import "MCSwipeTableViewCell.h"
 #import "UIColor+Colours.h"
 #import "postCell.h"
-#import <SafariServices/SafariServices.h>
-#import "PocketAPI.h"
-#import "TWTSideMenuViewController.h"
-#import "UINavigationController+M13ProgressViewBar.h"
 #import "LoginVC.h"
-#import "SettingsVC.h"
-
-@interface topStoriesViewController () <UIGestureRecognizerDelegate, MCSwipeTableViewCellDelegate,UIScrollViewDelegate,UIActionSheetDelegate>
+#import "FBShimmeringLayer.h"
+#import "FoldingView.h"
+#import <pop/POP.h>
+#import "HNManager.h"
+@interface topStoriesViewController () <UIGestureRecognizerDelegate, MCSwipeTableViewCellDelegate,UIScrollViewDelegate,UIActionSheetDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *readPost;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSMutableArray *comments;
@@ -28,24 +25,25 @@
 @property (nonatomic, strong)NSIndexPath *upvoteIndexPath;
 @property(strong, nonatomic)UIActionSheet *as;
 @property(strong,nonatomic)NSMutableArray *upvote;
+@property(strong,nonatomic)FBShimmeringLayer *loadingLayer;
+@property(strong,nonatomic)UITableView *tableView;
 @end
-
 @implementation topStoriesViewController
--(void)didReceiveMemoryWarning
-{
-    [[NSURLCache sharedURLCache] removeAllCachedResponses];
-}
+#define postTitlePadding 15
 
-- (void)stopListeningToInteractivePopGestureRecognizerNotification {
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"popBack" object:nil];
-}
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [self stopListeningToInteractivePopGestureRecognizerNotification];
-
+-(UITableView*)tableView{
+    if (!_tableView) {
+        _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
+        _tableView.delegate=self;
+        _tableView.dataSource=self;
+       [self.view addSubview:_tableView];
+    }
+    return _tableView;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     HNPost *post=[self.currentPosts objectAtIndex:indexPath.row];
+    NSString *postDetailText=[NSString stringWithFormat:@"%i points by %@ %@ - %i comments", post.Points, post.Username, post.TimeCreatedString,post.CommentCount];
+    CGSize postDetailSize= [postDetailText sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"AvenirNext-Regular" size:11]}];
     if ([self.readPost containsObject:post.PostId]) {
         UIFont   *textFont    = [UIFont fontWithName:@"AvenirNext-Regular" size:14];
         CGFloat cellWidth= self.tableView.frame.size.width-30;
@@ -54,7 +52,7 @@
                                                    options:NSStringDrawingUsesLineFragmentOrigin
                                                 attributes:@{ NSFontAttributeName : textFont }
                                                    context:nil].size;
-        return textSize.height + 52;
+        return textSize.height + postDetailSize.height+postTitlePadding*3;
     }
     else{
         UIFont   *textFont    = [UIFont fontWithName:@"AvenirNext-DemiBold" size:14];
@@ -64,35 +62,13 @@
                                                    options:NSStringDrawingUsesLineFragmentOrigin
                                                 attributes:@{ NSFontAttributeName : textFont }
                                                    context:nil].size;
-        return textSize.height + 52;
+        return textSize.height + postDetailSize.height+postTitlePadding*3;
     }
-    
 }
-- (void)registerForInteractivePopGestureRecognizerNotification {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openMenu) name:@"popBack" object:nil];
-    
-}
-- (void)defaultStatusBarColor {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-}
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self registerForInteractivePopGestureRecognizerNotification];
-    [self setStatusNavigationTitleAttribute];
     [self.tableView reloadData];
-    
 }
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-
-}
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-
-}
-
 -(NSMutableArray*)readPost{
     if (!_readPost) {
         _readPost = [[NSMutableArray alloc] init];
@@ -111,187 +87,111 @@
 - (void)saveTheListOfUpvote {
     [[NSUserDefaults standardUserDefaults] setObject:self.upvote forKey:@"listOfUpvote"];
 }
-- (void)setupRefreshControl {
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl setTintColor:[UIColor blackColor]];
-    [self.refreshControl addTarget:self action:@selector(loadingStories) forControlEvents:UIControlEventValueChanged];
-}
-- (void)loadDefaultStories {
-    self.postType=@"Top";
-}
-- (void)setupDelegation {
-    self.navigationController.interactivePopGestureRecognizer.delegate=self;
-}
-- (void)registerForNotification {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupLoggedIn) name:@"userIsLoggedIn" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupNotLoggedIn) name:@"userIsNotLoggedIn" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(sideMenuWillClosePreparation) name:@"sideMenuWillClose" object:nil];
-
-}
--(void)sideMenuWillClosePreparation{
-    self.tableView.scrollEnabled=YES;
-}
 - (void)retrieveListofReadPost {
     self.readPost= [[[NSUserDefaults standardUserDefaults] objectForKey:@"listOfReadPosts"] mutableCopy];
 }
 - (void)retrieveListofUpvote {
     self.upvote= [[[NSUserDefaults standardUserDefaults] objectForKey:@"listOfUpvote"] mutableCopy];
 }
-- (void)setupNavigationBarAttributes {
-    self.navigationController.navigationBar.tintColor=[UIColor darkGrayColor];
-    self.navigationController.navigationBar.barTintColor=[UIColor snowColor];
-}
-- (void)setupTableViewBackgroundColor {
-    self.tableView.backgroundColor=[UIColor snowColor];
-}
-
 - (void)initialUserSetup {
     if ([[HNManager sharedManager]userIsLoggedIn]) {
         self.userIsLoggedIn=YES;
-        self.navigationItem.rightBarButtonItem.enabled=YES;
     }
     else{
         self.userIsLoggedIn=NO;
-        self.navigationItem.rightBarButtonItem.enabled=NO;
 
     }
 }
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self setupDelegation];
-    [self registerForNotification];
     [self initialUserSetup];
     [self retrieveListofReadPost];
     [self retrieveListofUpvote];
-    [self loadDefaultStories];
+    self.postType=@"Top";
     [self getStories];
-    [self setupTableViewBackgroundColor];
-    [self setupRefreshControl];
-    self.limitReached=NO;
-    [self setupNavigationBarAttributes];
+    self.tableView.backgroundColor=[UIColor snowColor];
     
-}
--(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-    if (gestureRecognizer==self.navigationController.interactivePopGestureRecognizer) {
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"popBack" object:nil];
-    }
-    return YES;
+    self.limitReached=NO;
+    self.tableView.tag=1;
+    self.loadingLayer=[FBShimmeringLayer layer];
+    self.loadingLayer.frame=CGRectMake(0,0, self.view.bounds.size.width, 5);
+    CALayer *layer=[CALayer layer];
+    layer.frame=self.loadingLayer.bounds;
+    layer.backgroundColor=[UIColor lightGrayColor].CGColor;
+    self.loadingLayer.contentLayer=layer;
+    self.loadingLayer.shimmering=YES;
+    [self.view.layer addSublayer:self.loadingLayer];
 }
 -(void)setupLoggedIn{
-    self.navigationItem.rightBarButtonItem.enabled=YES;
+    
     self.userIsLoggedIn=YES;
     [self.tableView reloadData];
 }
 -(void)setupNotLoggedIn{
-    self.navigationItem.rightBarButtonItem.enabled=NO;
+    
     self.userIsLoggedIn=NO;
     [self.tableView reloadData];
 }
-- (IBAction)menuButton:(UIBarButtonItem *)sender {
-    [self openMenu];
-}
--(void)openMenu{
-    //So the table will stop scrolling when the side menu open
-    self.tableView.scrollEnabled=NO;
-    [self.sideMenuViewController openMenuAnimated:YES completion:nil];
-}
 - (void)getStories {
-    self.navigationItem.title = @"Loading...";
-    [self.navigationController setIndeterminate:YES];
+    self.loadingLayer.shimmering=YES;
     if ([self.postType isEqualToString:@"Top"]) {
         [[HNManager sharedManager] loadPostsWithFilter:PostFilterTypeTop completion:^(NSArray *posts, NSString *urlAddition){
             if (posts) {
                 self.currentPosts = [NSMutableArray arrayWithArray:posts];
-                self.navigationItem.title = self.postType;
                 [self.tableView reloadData];
-                [self.navigationController finishProgress];
-
+                //self.loadingLayer.shimmering=NO;
             }
             else{
-                self.navigationItem.title = @"Could not retrieve posts..";
-                [self.navigationController finishProgress];
-
+                //stop loading animation
             }
         }];
     }
-    
     else if ([self.postType isEqualToString:@"New"]) {
         [[HNManager sharedManager] loadPostsWithFilter:PostFilterTypeNew completion:^(NSArray *posts, NSString *urlAddition){
             if (posts) {
                 self.currentPosts = [NSMutableArray arrayWithArray:posts];
-                self.navigationItem.title = self.postType;
-                
                 [self.tableView reloadData];
-                [self.navigationController finishProgress];
-
-                
+                //stop loading animation
             }
             else{
-                self.navigationItem.title = @"Could not retrieve posts..";
-                [self.navigationController finishProgress];
-
+                //stop loading animation
             }
         }];
     }
-    
     else if ([self.postType isEqualToString:@"Best"]) {
         [[HNManager sharedManager] loadPostsWithFilter:PostFilterTypeBest completion:^(NSArray *posts, NSString *urlAddition){
             if (posts) {
                 self.currentPosts = [NSMutableArray arrayWithArray:posts];
-                self.navigationItem.title = self.postType;
-                
                 [self.tableView reloadData];
-                [self.navigationController finishProgress];
-
-                
+                //stop loading animation
             }
             else{
-                self.navigationItem.title = @"Could not retrieve posts..";
-                [self.navigationController finishProgress];
-
-                
+                //stop loading animation
             }
         }];
     }
-    
     else if ([self.postType isEqualToString:@"Ask"]) {
         [[HNManager sharedManager] loadPostsWithFilter:PostFilterTypeAsk completion:^(NSArray *posts, NSString *urlAddition){
             if (posts) {
                 self.currentPosts = [NSMutableArray arrayWithArray:posts];
-                self.navigationItem.title = self.postType;
-                
                 [self.tableView reloadData];
-                [self.navigationController finishProgress];
-
-                
+                //stop loading animation
             }
             else{
-                self.navigationItem.title = @"Could not retrieve posts..";
-                [self.navigationController finishProgress];
-
-                
+                //stop loading animation
             }
         }];
     }
-    
     else if ([self.postType isEqualToString:@"Jobs"]) {
         [[HNManager sharedManager] loadPostsWithFilter:PostFilterTypeJobs completion:^(NSArray *posts, NSString *urlAddition){
             if (posts) {
                 self.currentPosts = [NSMutableArray arrayWithArray:posts];
-                self.navigationItem.title = self.postType;
-                
                 [self.tableView reloadData];
-                [self.navigationController finishProgress];
-
+                //stop loading animation
             }
             else{
-                self.navigationItem.title = @"Could not retrieve posts..";
-                [self.navigationController finishProgress];
-
-                
+                //stop loading animation
             }
         }];
     }
@@ -301,7 +201,6 @@
     self.tableView.contentOffset = CGPointMake(0, 0 - self.tableView.contentInset.top);
 }
 -(void)loadingStories{
-    
     [self.refreshControl beginRefreshing];
     [self getStories];
     self.limitReached=NO;
@@ -315,17 +214,6 @@
 {
     return  [self.currentPosts count];
 }
-- (void)setupCellContentViewBackgroundColor:(postCell *)cell
-{
-    cell.contentView.backgroundColor=[UIColor snowColor];
-}
-
-- (void)setupCellHighlightedColor:(postCell *)cell
-{
-    cell.postTitle.highlightedTextColor = [UIColor turquoiseColor];
-    cell.postDetail.highlightedTextColor = [UIColor turquoiseColor];
-}
-
 - (void)setupCellSelectedBackgroundColor:(postCell *)cell
 {
     UIView * selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
@@ -337,20 +225,18 @@
     if (buttonIndex==self.as.destructiveButtonIndex) {
         HNPost *post=[self.currentPosts objectAtIndex:self.upvoteIndexPath.row];
         self.navigationItem.title = @"Upvoting...";
-        [self.navigationController setIndeterminate:YES];
+        //start loading animation
         [[HNManager sharedManager] voteOnPostOrComment:post direction:VoteDirectionUp completion:^(BOOL success) {
             if (success){
                 [self.upvote addObject:post.PostId];
                 [self saveTheListOfUpvote];
                 self.navigationItem.title =@"Upvote Sucessful";
                 [self.tableView reloadRowsAtIndexPaths:@[self.upvoteIndexPath] withRowAnimation:UITableViewRowAnimationNone];
-                [self.navigationController finishProgress];
-                [self setDefaultNavigationTitleWithDelay];
+                //stop loading animation
             }
             else {
                 self.navigationItem.title = @"Could Not Upvote";
-                [self.navigationController finishProgress];
-                [self setDefaultNavigationTitleWithDelay];
+                //stop loading animation
             }
         }];
     
@@ -363,15 +249,42 @@
     }
     return _as;
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-     postCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    HNPost *post=[self.currentPosts objectAtIndex:indexPath.row];
+
+    [tableView registerClass:[postCell class] forCellReuseIdentifier:CellIdentifier];
+    postCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    if (!cell) {
+     cell=[[postCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+     }
     [self configureCell:cell forRowAtIndexPath:indexPath];
     [self setupCellSelectedBackgroundColor:cell];
-    [self setupCellHighlightedColor:cell];
-    [self setupCellContentViewBackgroundColor:cell];
+    cell.postTitle.highlightedTextColor = [UIColor turquoiseColor];
+    cell.postDetail.highlightedTextColor = [UIColor turquoiseColor];    cell.contentView.backgroundColor=[UIColor snowColor];
+    if ([self.readPost containsObject:post.PostId]) {
+        UIFont   *textFont    = [UIFont fontWithName:@"AvenirNext-Regular" size:14];
+        CGFloat cellWidth= self.tableView.frame.size.width-postTitlePadding*2;
+        CGSize boundingSize = CGSizeMake(cellWidth, CGFLOAT_MAX);
+        CGSize textSize = [post.Title boundingRectWithSize:boundingSize
+                                                   options:NSStringDrawingUsesLineFragmentOrigin
+                                                attributes:@{ NSFontAttributeName : textFont }
+                                                   context:nil].size;
+        cell.postTitle.frame=CGRectMake(15, 15, textSize.width, textSize.height);
+    }
+    else{
+        UIFont   *textFont    = [UIFont fontWithName:@"AvenirNext-DemiBold" size:14];
+        CGFloat cellWidth= self.tableView.frame.size.width-postTitlePadding*2;
+        CGSize boundingSize = CGSizeMake(cellWidth, CGFLOAT_MAX);
+        CGSize textSize = [post.Title boundingRectWithSize:boundingSize
+                                                   options:NSStringDrawingUsesLineFragmentOrigin
+                                                attributes:@{ NSFontAttributeName : textFont }
+                                                   context:nil].size;
+        cell.postTitle.frame=CGRectMake(15, 15, textSize.width, textSize.height);
+    }
+    CGSize postDetailSize= [cell.postDetail.text sizeWithAttributes:@{NSFontAttributeName:cell.postDetail.font}];
+    cell.postDetail.frame=CGRectMake(15, cell.postTitle.frame.size.height+postTitlePadding*2, postDetailSize.width, postDetailSize.height);
     return cell;
 }
 - (void)setupCellTrigger:(postCell *)cell {
@@ -392,6 +305,7 @@
     }
     cell.postTitle.text=post.Title;
    cell.postDetail.text=[NSString stringWithFormat:@"%i points by %@ %@ - %i comments", post.Points, post.Username, post.TimeCreatedString,post.CommentCount];
+    
     UIView *commentView = [self viewWithImageName:@"Comment"];
     UIView *upvoteView=[self viewWithImageName:@"like"];
     [cell setDelegate:self];
@@ -410,13 +324,12 @@
         if (post.Type==PostTypeDefault) {
             //if there is no comment, we don't segue
             if (post.CommentCount==0){
-                self.navigationItem.title = @"No comment...";
-                [self setDefaultNavigationTitleWithDelay];
+                //show animation
             }
             else {
                 //we add the post to the read post list and segue to comment
                 [self.readPost addObject:post.PostId];
-                [self performSegueWithIdentifier:@"showComment" sender:self];
+                [self showComment];
 
             }
             
@@ -425,7 +338,7 @@
             //we always show the comment because it's askHN
             //askHN always have at least 1 comment
             [self.readPost addObject:post.PostId];
-            [self performSegueWithIdentifier:@"showComment" sender:self];
+            [self showComment];
 
         }
         //Job Post, check to see if it's a self post or webpage by loading the first comment and checking the string
@@ -438,12 +351,12 @@
                     self.comments = [NSMutableArray arrayWithArray:comments];
                 }
                 [self.readPost addObject:post.PostId];
-                [self performSegueWithIdentifier:@"showComment" sender:self];
+                [self showComment];
 
             }
             else {
                 [self.readPost addObject:post.PostId];
-                [self performSegueWithIdentifier:@"showPostContent" sender:self];
+                [self showStoryOfPost:post];
 
             }
             
@@ -460,12 +373,12 @@
     [self.readPost addObject:post.PostId];
     //if the post is default, we go to the webpage
     if (post.Type == PostTypeDefault){
-        [self performSegueWithIdentifier:@"showPostContent" sender:self];
+        [self showStoryOfPost:post];
 
     }
     //if the post is ask, we show the comment because AskHN is always self-post on HN
     else if (post.Type == PostTypeAskHN){
-            [self performSegueWithIdentifier:@"showComment" sender:self];
+        [self showComment];
 
         }
     //if it is a job post, we have to load the comment and check to see if it is self post or from a webpage
@@ -479,40 +392,46 @@
                     self.comments = [comments mutableCopy];}
                 else{
                     self.comments = [NSMutableArray arrayWithArray:comments];}
-                [self performSegueWithIdentifier:@"showComment" sender:self];}
+                [self showComment];
+            }
             else {
-                [self performSegueWithIdentifier:@"showPostContent" sender:self];
+                [self showStoryOfPost:post];
             }
         
         
         }];}
 }
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-HNPost *post=[self.currentPosts objectAtIndex:self.selectedIndexPath.row];
-    [self saveTheListOfReadPost];
-
-    if ([segue.identifier isEqualToString:@"showPostContent"]) {
-        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-
-            WebViewController *webView=segue.destinationViewController;
-            //the post that we reply to from the webview
-            webView.replyPost = post;
-    }
-    else if ([segue.identifier isEqualToString:@"showComment"]) {
-        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-
-        CommentsViewController *cvc=segue.destinationViewController;
-        //The post that we comment reply to
-        cvc.replyPost = post;
-    }
-    
-    else if ([segue.identifier isEqualToString:@"showLogin"]){
-        LoginVC *lvc=segue.destinationViewController;
-    }
-    else if ([segue.identifier isEqualToString:@"showSettings"]){
-        SettingsVC *svc=segue.destinationViewController;
-    }
+-(void)showComment{
+    HNPost *post=[self.currentPosts objectAtIndex:self.selectedIndexPath.row];
+    CommentsViewController *cvc=[[CommentsViewController alloc] init];
+    //The post that we comment reply to
+    cvc.replyPost = post;
+    [self presentViewController:cvc animated:YES completion:nil];
 }
+- (UIImage*)captureSuperViewScreenShot:(UIView *)view afterScreenUpdate:(BOOL)update
+{
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, YES,0);
+    [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:update];
+    return UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+}
+-(void)showStoryOfPost:(HNPost*)post{
+    [self saveTheListOfReadPost];
+    [self.tableView deselectRowAtIndexPath:self.selectedIndexPath animated:NO];
+    [self.tableView reloadRowsAtIndexPaths:@[self.selectedIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+     self.tableView.scrollEnabled=NO;
+    NSURLRequest *request=[NSURLRequest requestWithURL:[NSURL URLWithString:post.UrlString]];
+    CGRect frame = CGRectMake(0, -self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    FoldingView *foldView = [[FoldingView alloc] initWithFrame:frame request:request];
+    [foldView captureSuperViewScreenShot:self.view afterScreenUpdate:YES];
+    [self.view addSubview:foldView];
+   POPSpringAnimation *segueAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
+    segueAnimation.toValue=[NSValue valueWithCGRect:CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height)];
+    segueAnimation.springBounciness=5.0f;
+    segueAnimation.springSpeed=20.0f;
+    [foldView pop_addAnimation:segueAnimation forKey:nil];
+}
+
 - (void)swipeTableViewCellDidStartSwiping:(MCSwipeTableViewCell *)cell {
     //disable cell selection to prevent crashing
     //[self.tableView setAllowsSelection:NO];
@@ -529,37 +448,24 @@ HNPost *post=[self.currentPosts objectAtIndex:self.selectedIndexPath.row];
         imageView.contentMode = UIViewContentModeCenter;
         return imageView;
 }
--(void)setDefaultNavigationTitleAttributeWithDelay{
-    [self.navigationController.navigationBar performSelector:@selector(setTitleTextAttributes:) withObject:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor],NSForegroundColorAttributeName,[UIColor blackColor],NSBackgroundColorAttributeName,[UIFont fontWithName:@"HelveticaNeue-Light" size:19], NSFontAttributeName, nil]
-                                                              afterDelay:2];
-}
--(void)setStatusNavigationTitleAttribute{
-    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                                   [UIColor blackColor],NSForegroundColorAttributeName,
-                                                                   [UIColor blackColor],NSBackgroundColorAttributeName,[UIFont fontWithName:@"HelveticaNeue-Light" size:19], NSFontAttributeName, nil];
-}
--(void)setDefaultNavigationTitleWithDelay{
-    [self.navigationItem performSelector:@selector(setTitle:) withObject:self.postType afterDelay:2];
-}
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //Displaying the last cell, so we will load more stories
    if(indexPath.row == [self.currentPosts count] - 1){
            if (self.limitReached==NO) {
            if (![self.postType isEqualToString:@"Jobs"]){
-        self.navigationItem.title=@"Loading more...";
-               [self.navigationController setIndeterminate:YES];
+               //loading more stories
+               //start loading animation
         [[HNManager sharedManager] loadPostsWithUrlAddition:[[HNManager sharedManager] postUrlAddition] completion:^(NSArray *posts, NSString *urlAddition) {
             if (posts) {
                 [self.currentPosts addObjectsFromArray:posts];
                 [self.tableView reloadData];
                 self.navigationItem.title=self.postType;
-                [self.navigationController finishProgress];
+                //stop loading animation
                 if ([posts count]==0) {
                     self.limitReached=YES;
-                    self.navigationItem.title=@"Could not load more";
-                    [self.navigationController setIndeterminate:YES];
-                    [self setDefaultNavigationTitleWithDelay];
+                    //no mo story
+                    //stop loading animation
 
                 }
             }
