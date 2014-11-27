@@ -12,7 +12,6 @@
 @property (nonatomic, strong) NSString *postType;
 @property(nonatomic)BOOL reloadStories;
 @property(nonatomic)BOOL limitReached;
--(void)loadingStories;
 -(void)getStories;
 
 @end

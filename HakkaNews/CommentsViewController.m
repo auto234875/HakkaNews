@@ -83,6 +83,7 @@
 {
     return [self.comments count];
 }
+
 - (void)setupCellSelectedBackGroundColor:(commentCell *)cell
 {
     UIView * selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];

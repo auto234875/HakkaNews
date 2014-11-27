@@ -27,6 +27,15 @@
 @property(strong,nonatomic)NSMutableArray *upvote;
 @property(strong,nonatomic)FBShimmeringLayer *loadingLayer;
 @property(strong,nonatomic)UITableView *tableView;
+@property(nonatomic,strong)UIButton *menuButton;
+@property(nonatomic,strong)UIImageView *menuImage;
+@property(nonatomic,strong)UIButton *topButton;
+@property(nonatomic,strong)UIButton *nButton;
+@property(nonatomic,strong)UIButton *bestButton;
+@property(nonatomic,strong)UIButton *askButton;
+@property(nonatomic,strong)UIButton *jobsButton;
+@property(nonatomic,strong)UIButton *loginButton;
+
 @end
 @implementation topStoriesViewController
 #define postTitlePadding 15
@@ -111,17 +120,32 @@
     self.postType=@"Top";
     [self getStories];
     self.tableView.backgroundColor=[UIColor snowColor];
-    
     self.limitReached=NO;
     self.tableView.tag=1;
     self.loadingLayer=[FBShimmeringLayer layer];
     self.loadingLayer.frame=CGRectMake(0,0, self.view.bounds.size.width, 5);
     CALayer *layer=[CALayer layer];
     layer.frame=self.loadingLayer.bounds;
-    layer.backgroundColor=[UIColor lightGrayColor].CGColor;
+    layer.backgroundColor=[UIColor redColor].CGColor;
     self.loadingLayer.contentLayer=layer;
     self.loadingLayer.shimmering=YES;
     [self.view.layer addSublayer:self.loadingLayer];
+}
+-(void)getBestStories{
+    self.postType=@"Best";
+    [self getStories];
+}
+-(void)getAskStories{
+    self.postType=@"Ask";
+    [self getStories];
+}
+-(void)getTopStories{
+    self.postType=@"Top";
+    [self getStories];
+}
+-(void)getNewStories{
+    self.postType=@"New";
+    [self getStories];
 }
 -(void)setupLoggedIn{
     
@@ -133,15 +157,23 @@
     self.userIsLoggedIn=NO;
     [self.tableView reloadData];
 }
-- (void)getStories {
+-(void)turnOffShimmeringLayer{
+    self.loadingLayer.shimmering=NO;
+    self.loadingLayer.opacity=0.0;
+}
+-(void)turnOnShimmeringLayer{
     self.loadingLayer.shimmering=YES;
+    self.loadingLayer.opacity=0.8;
+}
+- (void)getStories {
+    [self turnOnShimmeringLayer];
     if ([self.postType isEqualToString:@"Top"]) {
         [[HNManager sharedManager] loadPostsWithFilter:PostFilterTypeTop completion:^(NSArray *posts, NSString *urlAddition){
             if (posts) {
                 self.currentPosts = [NSMutableArray arrayWithArray:posts];
                 [self.tableView reloadData];
-                //self.loadingLayer.shimmering=NO;
-            }
+                [self turnOffShimmeringLayer];
+                }
             else{
                 //stop loading animation
             }
@@ -152,7 +184,7 @@
             if (posts) {
                 self.currentPosts = [NSMutableArray arrayWithArray:posts];
                 [self.tableView reloadData];
-                //stop loading animation
+                [self turnOffShimmeringLayer];
             }
             else{
                 //stop loading animation
@@ -164,7 +196,7 @@
             if (posts) {
                 self.currentPosts = [NSMutableArray arrayWithArray:posts];
                 [self.tableView reloadData];
-                //stop loading animation
+                [self turnOffShimmeringLayer];
             }
             else{
                 //stop loading animation
@@ -176,7 +208,7 @@
             if (posts) {
                 self.currentPosts = [NSMutableArray arrayWithArray:posts];
                 [self.tableView reloadData];
-                //stop loading animation
+                [self turnOffShimmeringLayer];
             }
             else{
                 //stop loading animation
@@ -188,7 +220,7 @@
             if (posts) {
                 self.currentPosts = [NSMutableArray arrayWithArray:posts];
                 [self.tableView reloadData];
-                //stop loading animation
+                [self turnOffShimmeringLayer];
             }
             else{
                 //stop loading animation
@@ -200,12 +232,7 @@
 - (void)scrollToTopOfTableView {
     self.tableView.contentOffset = CGPointMake(0, 0 - self.tableView.contentInset.top);
 }
--(void)loadingStories{
-    [self.refreshControl beginRefreshing];
-    [self getStories];
-    self.limitReached=NO;
-    [self.refreshControl endRefreshing];
-}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -224,18 +251,18 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex==self.as.destructiveButtonIndex) {
         HNPost *post=[self.currentPosts objectAtIndex:self.upvoteIndexPath.row];
-        self.navigationItem.title = @"Upvoting...";
+        //is upvoteing right now
         //start loading animation
         [[HNManager sharedManager] voteOnPostOrComment:post direction:VoteDirectionUp completion:^(BOOL success) {
             if (success){
                 [self.upvote addObject:post.PostId];
                 [self saveTheListOfUpvote];
-                self.navigationItem.title =@"Upvote Sucessful";
+                //upvote sucessful
                 [self.tableView reloadRowsAtIndexPaths:@[self.upvoteIndexPath] withRowAnimation:UITableViewRowAnimationNone];
                 //stop loading animation
             }
             else {
-                self.navigationItem.title = @"Could Not Upvote";
+                //can't upvote
                 //stop loading animation
             }
         }];
@@ -291,7 +318,6 @@
     cell.firstTrigger = 0.1;
     cell.secondTrigger = 0.35;
 }
-
 - (void)configureCell:(postCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     HNPost *post=[self.currentPosts objectAtIndex:indexPath.row];
     //check if the post exist in readPost array and set the postTitle font accordingly
@@ -304,7 +330,8 @@
         cell.postTitle.textColor=[UIColor blackColor];
     }
     cell.postTitle.text=post.Title;
-   cell.postDetail.text=[NSString stringWithFormat:@"%i points by %@ %@ - %i comments", post.Points, post.Username, post.TimeCreatedString,post.CommentCount];
+   //cell.postDetail.text=[NSString stringWithFormat:@"%i points by %@ %@ - %i comments", post.Points, post.Username, post.TimeCreatedString,post.CommentCount];
+    cell.postDetail.text=[NSString stringWithFormat:@"%i points ∙ %i comments", post.Points, post.CommentCount];
     
     UIView *commentView = [self viewWithImageName:@"Comment"];
     UIView *upvoteView=[self viewWithImageName:@"like"];
@@ -460,7 +487,6 @@
             if (posts) {
                 [self.currentPosts addObjectsFromArray:posts];
                 [self.tableView reloadData];
-                self.navigationItem.title=self.postType;
                 //stop loading animation
                 if ([posts count]==0) {
                     self.limitReached=YES;
